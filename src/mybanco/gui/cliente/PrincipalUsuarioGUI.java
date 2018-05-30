@@ -33,7 +33,7 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
         initComponents();
         
         msjBienvenida.setText("Hola! " + tercero.getNombre());
-        
+        setLocationRelativeTo(null);
     }
 
     /**

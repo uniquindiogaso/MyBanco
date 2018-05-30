@@ -15,7 +15,7 @@ import java.util.Date;
 public class CuentaAhorros extends Cuenta implements Serializable{
     
     private Date fRetiro;
-    public double INTERES_0_A_5 = 0.01;
+    public final double INTERES_0_A_5 = 0.01;
     public double INTERES_5_A_20 = 0.02;
     public double INTERES_MAS_20 = 0.03;
 

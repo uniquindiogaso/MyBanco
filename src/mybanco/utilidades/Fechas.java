@@ -7,7 +7,9 @@ package mybanco.utilidades;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,5 +28,25 @@ public class Fechas {
             Logger.getLogger(Fechas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fecha;
+    }
+
+    public static int mesesEntreFechas(Date fInicial, Date fFinal) {
+
+        int meses = 1;
+
+        Calendar inicio = new GregorianCalendar();
+        Calendar fin = new GregorianCalendar();
+
+        inicio.setTime(fInicial);
+        fin.setTime(fFinal);
+
+        int diffAnios = fin.get(Calendar.YEAR) - inicio.get(Calendar.YEAR);
+        int diffMeses = diffAnios * 12 + (fin.get(Calendar.MONTH) - inicio.get(Calendar.MONTH));
+
+        if (diffMeses > 0) {
+            meses = diffMeses;
+        }
+
+        return meses;
     }
 }

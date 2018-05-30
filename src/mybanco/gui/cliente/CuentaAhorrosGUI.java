@@ -21,6 +21,7 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
     public CuentaAhorrosGUI(PrincipalUsuarioGUI p) {
         this.p = p;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -45,6 +46,11 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jButton1.setText("Consignar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jButton2.setText("Crear Cuenta de Ahorros");
@@ -64,6 +70,11 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jButton4.setText("Retiro de Ahorros");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +128,14 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        atras();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        abrirConsignar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       retirarAhorros();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +195,16 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+    }
+
+    private void abrirConsignar() {
+       this.setVisible(false);
+        new ConsignarAhorrosGUI(p).setVisible(true);
+    }
+
+    private void retirarAhorros() {
+        this.setVisible(false);
+        new RetirarAhorrosGUI(p).setVisible(true);
     }
 
 }

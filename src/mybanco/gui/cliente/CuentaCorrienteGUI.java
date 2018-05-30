@@ -21,6 +21,7 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     public CuentaCorrienteGUI(PrincipalUsuarioGUI p) {
         this.p = p;
         initComponents();
+        initOtherComponets();
     }
 
     /**
@@ -177,6 +178,11 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+    }
+
+    private void initOtherComponets() {
+        //centrar ventana
+        this.setLocationRelativeTo(null);
     }
 
 }

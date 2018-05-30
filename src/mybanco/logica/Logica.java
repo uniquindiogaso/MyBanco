@@ -1,6 +1,7 @@
 package mybanco.logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 import mybanco.clases.Cdt;
 import mybanco.clases.Cliente;
 import mybanco.clases.Cuenta;
@@ -64,6 +65,31 @@ public class Logica {
         }
     }
 
+    public ArrayList<Cuenta> cuentasAhorrosUsuario(Tercero t) {
+        ArrayList<Cuenta> res = new ArrayList<>();
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaAhorros && cuenta.getTercero().getIdentificacion().equals(t.getIdentificacion()))   {
+                res.add(cuenta);
+            }
+        }        
+        System.out.println("Cuentas Ahorros para Usuario: " + cuentas.size());
+        return res;
+    }
+    
+    public boolean actualizarMontoCuentaAhorros(Cuenta cuentaAct , Double monto){
+        for (Cuenta cuenta : cuentas) {
+            if(cuenta.getNumero().equals(cuentaAct.getNumero())){
+                cuenta.setMonto(monto+cuenta.getMonto());
+                //actualizar en archivo
+                archivos.guardarCuentas(cuentas);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+
     public String crearCuentaAhorros(Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
         boolean ok = cuentas.add(new CuentaAhorros(numCuenta, 0, tercero));
@@ -72,15 +98,15 @@ public class Logica {
         }
         return null;
     }
-    
+
     public String crearCuentaCorriente(Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
-        boolean ok = cuentas.add(new CuentaCorriente(0, numCuenta, 0, tercero) );
+        boolean ok = cuentas.add(new CuentaCorriente(0, numCuenta, 0, tercero));
         if (ok) {
             return numCuenta;
         }
         return null;
-    }    
+    }
 
     public ArrayList<Cliente> getClientes() {
         return clientes;
@@ -105,7 +131,7 @@ public class Logica {
     public void setCuentas(ArrayList<Cuenta> cuentas) {
         this.cuentas = cuentas;
     }
-    
+
     public ArrayList<Cdt> getCdts() {
         return cdts;
     }
