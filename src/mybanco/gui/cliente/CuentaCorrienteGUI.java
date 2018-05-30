@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class CuentaCorrienteGUI extends javax.swing.JFrame {
 

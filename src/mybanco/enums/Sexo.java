@@ -7,7 +7,7 @@ package mybanco.enums;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public enum Sexo {
     MASCULINO,FEMENINO

@@ -17,7 +17,7 @@ import mybanco.logica.Logica;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class PrincipalAdmin extends javax.swing.JFrame {
 

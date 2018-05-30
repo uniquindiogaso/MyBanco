@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class Tercero implements Serializable{
     
