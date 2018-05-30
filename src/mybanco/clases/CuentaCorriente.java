@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class CuentaCorriente extends Cuenta implements Serializable{
     

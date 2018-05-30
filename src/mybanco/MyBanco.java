@@ -9,7 +9,7 @@ import mybanco.gui.Login;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class MyBanco {
 

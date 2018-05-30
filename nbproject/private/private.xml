@@ -9,5 +9,13 @@
             <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/clases/Cdt.java</file>
             <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/utilidades/Archivos.java</file>
         </group>
+        <group name="Lenguaje">
+            <file>file:/D:/repos/MyBanco/src/mybanco/clases/Tercero.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/enums/PagoInteres.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/clases/CuentaCorriente.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/utilidades/Archivos.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/logica/Logica.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/clases/Cdt.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -14,7 +14,7 @@ import mybanco.logica.Logica;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class CdtsUI extends javax.swing.JFrame {
 

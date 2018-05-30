@@ -16,7 +16,7 @@ import mybanco.logica.Logica;
 
 /**
  *
- * @author gusta
+ * @author sori
  */
 public class PrincipalUsuarioGUI extends javax.swing.JFrame {
 
