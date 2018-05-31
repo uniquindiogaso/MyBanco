@@ -232,6 +232,19 @@ public class Logica {
         return false;
     }
 
+    public ArrayList<CuentaNomina> obtenerCuentasNomina(Tercero empresa) {
+        ArrayList<CuentaNomina> nominas = new ArrayList<>();
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaNomina) {
+                CuentaNomina nomina = (CuentaNomina) cuenta;
+                if (nomina.getEmpresa().getIdentificacion().equals(empresa.getIdentificacion())) {
+                    nominas.add(nomina);
+                }
+            }
+        }
+        return nominas;
+    }
+
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
