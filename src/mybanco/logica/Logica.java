@@ -170,15 +170,15 @@ public class Logica {
         System.out.println("Cuentas corrientes para Usuario: " + res.size());
         return res;
     }
-    
-    public ArrayList<Cdt> cdtsUsuario(Tercero t){
-         ArrayList<Cdt> res = new ArrayList<>();
-         for(Cdt cdt : cdts){
-             if ( cdt.getCliente().getIdentificacion().equals(t.getIdentificacion())){
-                 res.add(cdt);
-             }
-         }
-         return res;
+
+    public ArrayList<Cdt> cdtsUsuario(Tercero t) {
+        ArrayList<Cdt> res = new ArrayList<>();
+        for (Cdt cdt : cdts) {
+            if (cdt.getCliente().getIdentificacion().equals(t.getIdentificacion())) {
+                res.add(cdt);
+            }
+        }
+        return res;
     }
 
     /**
@@ -374,6 +374,21 @@ public class Logica {
         return nominas;
     }
 
+    public Cliente obtenerCliente(String identificacion) {
+        Cliente cliente = null;
+        for (Cliente c : clientes) {
+            if (c.getIdentificacion().equals(identificacion)) {
+                return c;
+            }
+        }
+        return cliente;
+    }
+
+    
+    public boolean eliminarCliente(Cliente c){
+        return clientes.remove(c);
+    }
+    
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }

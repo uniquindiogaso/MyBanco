@@ -56,7 +56,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         msjBienvenida = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bCrudClientes = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         msjBienvenida1 = new javax.swing.JLabel();
@@ -85,11 +85,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jButton3.setText("Clientes");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bCrudClientes.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        bCrudClientes.setText("Clientes");
+        bCrudClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bCrudClientesActionPerformed(evt);
             }
         });
 
@@ -140,7 +140,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bCrudClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -170,7 +170,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(bCrudClientes)
                 .addGap(13, 13, 13)
                 .addComponent(jButton1)
                 .addGap(33, 33, 33)
@@ -197,9 +197,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         registrarCDT();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bCrudClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrudClientesActionPerformed
+       crudClientes();
+    }//GEN-LAST:event_bCrudClientesActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         listadoClientes();
@@ -254,9 +254,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCrudClientes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -373,5 +373,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         String msj = "El dinero que se debe pagar por Concepto de Interes a Cuentas Ahorros es $" + interes;
         JOptionPane.showMessageDialog(null, msj, "Interes Cuentas Ahorros", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void crudClientes() {
+        this.setVisible(false);
+        new ClientesUI(this).setVisible(true);
     }
 }
