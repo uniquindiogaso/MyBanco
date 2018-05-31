@@ -420,7 +420,7 @@ public class ModificarClienteUI extends javax.swing.JFrame {
      */
     private void atras() {
         this.setVisible(false);
-        p.setVisible(true);
+        p.setVisible(true);       
     }
 
     /**
@@ -448,6 +448,12 @@ public class ModificarClienteUI extends javax.swing.JFrame {
         
         if( numCuentas > 0){
             JOptionPane.showMessageDialog(this, "No se puede eliminar Cliente, tiene cuentas Activas", "No se puede eliminar", JOptionPane.WARNING_MESSAGE);
+        }else{
+           boolean ok =  p.getLogica().eliminarCliente(usuario);
+           if ( ok ){
+               JOptionPane.showMessageDialog(null, "Se Elimino Correctamente el usuario");
+               atras();
+           }
         }
     }
 }
