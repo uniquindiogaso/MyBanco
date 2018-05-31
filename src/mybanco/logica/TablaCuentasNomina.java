@@ -1,3 +1,10 @@
+
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.logica;
 
 import java.util.ArrayList;
@@ -5,8 +12,11 @@ import javax.swing.table.AbstractTableModel;
 import mybanco.clases.CuentaNomina;
 
 /**
+ * Esta clase contiene las tablas de la cuentas nomina
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class TablaCuentasNomina extends AbstractTableModel {
 

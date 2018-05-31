@@ -13,5 +13,12 @@
             <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/utilidades/Fechas.java</file>
             <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/clases/Cuenta.java</file>
         </group>
+        <group name="Lenguaje">
+            <file>file:/D:/repos/MyBanco/src/mybanco/gui/cliente/CuentaAhorrosGUI.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/gui/cliente/CrearClienteUI.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/gui/cliente/ConsignarCorrienteGUI.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/gui/cliente/ConsignarAhorrosGUI.java</file>
+            <file>file:/D:/repos/MyBanco/src/mybanco/clases/Cdt.java</file>
+        </group>
     </open-files>
 </project-private>

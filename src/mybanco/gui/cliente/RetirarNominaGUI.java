@@ -1,11 +1,20 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.gui.cliente;
 
 import javax.swing.JOptionPane;
 import mybanco.clases.Cuenta;
 
 /**
+ * Esta clase contiene la ventana de retiro cuentas nomina
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class RetirarNominaGUI extends javax.swing.JFrame {
 
@@ -181,7 +190,9 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
-
+/**
+ * Metodo que permite crear cuentas de ahorro
+ */
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -193,7 +204,9 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
         }
     }
-
+/**
+ * Este metodo permite retroceder en la ventana
+ */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
@@ -208,7 +221,9 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
             cbCuentasNomina.addItem(c);
         }
     }
-
+/**
+ * Este metodo permite retirar dela cuentas de nomina
+ */
     private void retirar() {
         if (cbCuentasNomina.getSelectedItem() == null || cValor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar la consignacion", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);

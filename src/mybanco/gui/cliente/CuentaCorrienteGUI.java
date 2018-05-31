@@ -1,15 +1,20 @@
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.cliente;
 
 import javax.swing.JOptionPane;
 
 /**
+ * Esta clase permite la interfaz de cuenta corriente
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CuentaCorrienteGUI extends javax.swing.JFrame {
 
@@ -122,11 +127,11 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCrearCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearCuentaCorrienteActionPerformed
-       crearCuentaCorriente();
+        crearCuentaCorriente();
     }//GEN-LAST:event_bCrearCuentaCorrienteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       atras();
+        atras();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void consignarCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consignarCuentaCorrienteActionPerformed
@@ -180,19 +185,24 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
+/**
+     * Metodo que permite crear Cuenta Corriente
+     */
     private void crearCuentaCorriente() {
         String res = p.getLogica().crearCuentaCorriente(p.getTercero());
         if (res != null) {
             //mostrar mensaje aca
             System.out.println("Su Num de Cuenta corriente es " + res + " Por favor no la pierda!");
             JOptionPane.showMessageDialog(p.getContentPane(), "El numero de Cuenta Corriente es " + res + ".\nPor favor anote este numero ya que sera fundamental para realizar transacciones.");
-            
+
             //persistiendo informacion en archivos
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
         }
     }
 
+    /**
+     * Permite retroceder la ventana
+     */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
@@ -203,11 +213,17 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Permite realizar la accion de consignar en la cuenta corriente
+     */
     private void consignar() {
         this.setVisible(false);
         new ConsignarCorrienteGUI(p).setVisible(true);
     }
 
+    /**
+     * Permite realizar la accion de retirar en la cuenta
+     */
     private void retirar() {
         this.setVisible(false);
         new RetirarCorrienteGUI(p).setVisible(true);

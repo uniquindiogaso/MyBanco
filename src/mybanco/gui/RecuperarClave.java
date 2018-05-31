@@ -210,6 +210,9 @@ public class RecuperarClave extends javax.swing.JFrame {
 
     }
 
+    /**
+     * MEtodo que permite ir atras en la ventana
+     */
     private void atras() {
         this.setVisible(false);
         login.setVisible(true);

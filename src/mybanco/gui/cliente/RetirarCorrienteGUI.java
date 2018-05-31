@@ -1,3 +1,9 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.gui.cliente;
 
 import java.util.Date;
@@ -7,8 +13,11 @@ import mybanco.clases.CuentaAhorros;
 import mybanco.utilidades.Fechas;
 
 /**
+ * Esta clase contiene la ventana de retiro cuentas corrientes
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class RetirarCorrienteGUI extends javax.swing.JFrame {
 
@@ -218,7 +227,9 @@ public class RetirarCorrienteGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
-
+/**
+ * Metodo que permite ir hacia atras en la ventana
+ */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
@@ -233,7 +244,9 @@ public class RetirarCorrienteGUI extends javax.swing.JFrame {
             cbCuentasCorriente.addItem(c);
         }
     }
-
+/**
+ * MEtodo que permite retirar un monto de la cuenta corriente
+ */
     private void retirar() {
         if (cbCuentasCorriente.getSelectedItem() == null ) {
             JOptionPane.showMessageDialog(this, "Debe tener una cuenta registrada para poder retirar", "No hay cuentas registradas", JOptionPane.ERROR_MESSAGE);

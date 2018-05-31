@@ -1,10 +1,11 @@
-/**
- * Esta clase permite la interfaz de consiganar un ahorro
- *
- * @author Soraya Gonzalez
- * @author Andres Betancourt
- * @version 1.0
+
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
+
 package mybanco.gui.cliente;
 
 import javax.swing.JOptionPane;

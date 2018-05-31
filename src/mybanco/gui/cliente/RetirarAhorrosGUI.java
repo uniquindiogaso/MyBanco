@@ -1,3 +1,9 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.gui.cliente;
 
 import java.util.Date;
@@ -7,8 +13,11 @@ import mybanco.clases.CuentaAhorros;
 import mybanco.utilidades.Fechas;
 
 /**
+ * Esta clase contiene la ventana de retirar ahorros
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class RetirarAhorrosGUI extends javax.swing.JFrame {
 
@@ -194,7 +203,9 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
-
+/**
+     * Metodo que permite crear cuenta de ahorros
+     */
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -207,6 +218,9 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo que permite retoceder de ventana
+     */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
@@ -222,19 +236,22 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Método que permite validar la exstencia de cuentas de ahorros
+     */
     private void retirar() {
-        if (cbCuentasAhorros.getSelectedItem() == null ) {
+        if (cbCuentasAhorros.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(this, "Debe tener una cuenta registrada para poder retirar", "No hay cuentas registradas", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         Cuenta cuenta = (Cuenta) cbCuentasAhorros.getSelectedItem();
-        Double entregar = cuenta.getMonto()+Double.valueOf(cRentabilidad.getText());
-        
-        boolean ok = p.getLogica().actualizarMontoCuentaAhorros(cuenta, -cuenta.getMonto(),new Date());
+        Double entregar = cuenta.getMonto() + Double.valueOf(cRentabilidad.getText());
+
+        boolean ok = p.getLogica().actualizarMontoCuentaAhorros(cuenta, -cuenta.getMonto(), new Date());
 
         if (ok) {
-            JOptionPane.showMessageDialog(this, "Transaccion Exitosa. se Entregan: $"+entregar, "Retiro Ahorros", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Transaccion Exitosa. se Entregan: $" + entregar, "Retiro Ahorros", JOptionPane.INFORMATION_MESSAGE);
             setVisible(false);
             p.setVisible(true);
         } else {
@@ -242,6 +259,9 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * MEtodo que permite calcular la rentabiliad de la cuenta de ahorros
+     */
     private void calcularRentabilidad() {
         if (cbCuentasAhorros.getSelectedItem() != null) {
             Cuenta c = (Cuenta) cbCuentasAhorros.getSelectedItem();

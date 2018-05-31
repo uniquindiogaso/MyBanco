@@ -1,3 +1,9 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.logica;
 
 import java.util.ArrayList;
@@ -14,8 +20,11 @@ import mybanco.utilidades.Archivos;
 import mybanco.utilidades.General;
 
 /**
+ * Esta clase contiene la logica del proyecto
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class Logica {
 
@@ -40,6 +49,13 @@ public class Logica {
         System.out.println("Cantidad de Cuentas Sistema " + cuentas.size());
     }
 
+    /**
+     * Metodo que permite a un tercero iniciar sesion
+     *
+     * @param user usuario
+     * @param clave clave del usuario
+     * @return usuario
+     */
     public Tercero iniciarSesion(String user, String clave) {
         Tercero usuario = null;
         for (Cliente c : clientes) {
@@ -57,6 +73,13 @@ public class Logica {
         return usuario;
     }
 
+    /**
+     * Metodo que perite recuperar la clave
+     *
+     * @param identif cedula del usuario
+     * @param respuesta clave
+     * @return Cliente
+     */
     public Cliente recuperarClave(String identif, String respuesta) {
         Cliente cliente = null;
         for (Cliente c : clientes) {
@@ -68,6 +91,12 @@ public class Logica {
         return cliente;
     }
 
+    /**
+     * Metodo que permite modificar un cliente
+     *
+     * @param c cliente
+     * @return boleano
+     */
     public boolean modificarCliente(Cliente c) {
         int pos = -1;
         for (int i = 0; i < clientes.size(); i++) {
@@ -91,6 +120,12 @@ public class Logica {
         return true;
     }
 
+    /**
+     * Metodo que contiene un arreglo de cuentas de ahorro del usuario
+     *
+     * @param t tercero
+     * @return un resultado con las cuentas disponibles
+     */
     public ArrayList<Cuenta> cuentasAhorrosUsuario(Tercero t) {
         ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
@@ -102,6 +137,12 @@ public class Logica {
         return res;
     }
 
+    /**
+     * Metodo que contiene un arreglo de cuentas nomina del usuario
+     *
+     * @param t tercero
+     * @return resultado total de cuentas
+     */
     public ArrayList<Cuenta> cuentasNominaUsuario(Tercero t) {
         ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
@@ -113,6 +154,12 @@ public class Logica {
         return res;
     }
 
+    /**
+     * Metodo que contiene un arreglo de cuentas corrientes del usuario
+     *
+     * @param t tercero
+     * @return resultado con las cuentas corrientes del usuario
+     */
     public ArrayList<Cuenta> cuentasCorrientesUsuario(Tercero t) {
         ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
@@ -124,6 +171,14 @@ public class Logica {
         return res;
     }
 
+    /**
+     * Metodo que permite actualizar el monto de la cuenta de ahorros
+     *
+     * @param cuentaAct cuenta de ahorros activa
+     * @param monto monto de la cuenta de ahorros
+     * @param fRetiro fecha de retiro de la cuenta de ahorros
+     * @return boleano
+     */
     public boolean actualizarMontoCuentaAhorros(Cuenta cuentaAct, Double monto, Date fRetiro) {
         for (Cuenta cuenta : cuentas) {
             if (cuenta.getNumero().equals(cuentaAct.getNumero())) {
@@ -140,6 +195,13 @@ public class Logica {
         return false;
     }
 
+    /**
+     * Metodo para actualizar la fecha monto de cuenta corriente
+     *
+     * @param cuentaAct cueta corriente del usuario
+     * @param monto monto actual de la cuenta corriente
+     * @return booleano
+     */
     public boolean actualizarMontoCuentaCorriente(Cuenta cuentaAct, Double monto) {
         for (Cuenta cuenta : cuentas) {
             if (cuenta.getNumero().equals(cuentaAct.getNumero())) {
@@ -153,6 +215,13 @@ public class Logica {
         return false;
     }
 
+    /**
+     * Metodo que permite actualizar monto de cuenta nomina
+     *
+     * @param numCuenta numero de cuenta
+     * @param monto monto disponible
+     * @return boleano
+     */
     public boolean actualizarMontoCuentaNomina(String numCuenta, Double monto) {
         for (Cuenta cuenta : cuentas) {
             if (cuenta.getNumero().equals(numCuenta)) {
@@ -165,6 +234,12 @@ public class Logica {
         return false;
     }
 
+    /**
+     * Metodo que permite la creacion de una cuenta de ahorros
+     *
+     * @param tercero
+     * @return numero de cuenta
+     */
     public String crearCuentaAhorros(Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
         boolean ok = cuentas.add(new CuentaAhorros(numCuenta, 0, tercero));
@@ -174,6 +249,12 @@ public class Logica {
         return null;
     }
 
+    /**
+     * Metodo que permite la creacion de la cuenta corriente
+     *
+     * @param tercero
+     * @return numero de la cuenta
+     */
     public String crearCuentaCorriente(Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
         boolean ok = cuentas.add(new CuentaCorriente(0, numCuenta, 0, tercero));
@@ -183,6 +264,13 @@ public class Logica {
         return null;
     }
 
+    /**
+     * Metodo que permite la cracion de la cuenta de nomina
+     *
+     * @param empresa empresa
+     * @param tercero a quien se le va a asiganar la cuenta
+     * @return numero de cuenta
+     */
     public String crearCuentaNomina(Empresa empresa, Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
         boolean ok = cuentas.add(new CuentaNomina(empresa, numCuenta, 0, tercero));
@@ -192,6 +280,12 @@ public class Logica {
         return null;
     }
 
+    /**
+     * Metodo que permite obtener el numero de la cuenta nomina
+     *
+     * @param c cliente
+     * @return numero de cuenta
+     */
     public String obtenerNumCuentaNomina(Cliente c) {
         for (Cuenta cuenta : cuentas) {
             if (c.getIdentificacion().equals(cuenta.getTercero().getIdentificacion()) && cuenta instanceof CuentaNomina) {
@@ -201,6 +295,13 @@ public class Logica {
         return null;
     }
 
+    /**
+     * MEtodo que permite conocer la existencua de la cuenta nomina
+     *
+     * @param empresa empresa
+     * @param empleado empleado
+     * @return booleano
+     */
     public boolean existeCuentaNomina(Empresa empresa, Tercero empleado) {
         for (Cuenta cuenta : cuentas) {
             if (cuenta instanceof CuentaNomina) {
@@ -214,6 +315,12 @@ public class Logica {
         return false;
     }
 
+    /**
+     * MEtodo que permite la existencia de la cuenta nomina a un tercero
+     *
+     * @param tercero tercero
+     * @return boleano
+     */
     public boolean existeCuentaNomina(Tercero tercero) {
         for (Cuenta cuenta : cuentas) {
             if (cuenta instanceof CuentaNomina && cuenta.getTercero().getIdentificacion().equals(tercero.getIdentificacion())) {
@@ -223,6 +330,12 @@ public class Logica {
         return false;
     }
 
+    /**
+     * MEtodo que permite validar si la cuenta si existe
+     *
+     * @param identificacion identificacion del usuario
+     * @return boleano
+     */
     public boolean validarSiExisteCliente(String identificacion) {
         for (Cliente cliente : clientes) {
             if (cliente.getIdentificacion().equals(identificacion)) {
@@ -232,6 +345,12 @@ public class Logica {
         return false;
     }
 
+    /**
+     * Metodo que contienen un arreglo para obtener las cuentas
+     *
+     * @param empresa empresa
+     * @return nominas de la empresa
+     */
     public ArrayList<CuentaNomina> obtenerCuentasNomina(Tercero empresa) {
         ArrayList<CuentaNomina> nominas = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {

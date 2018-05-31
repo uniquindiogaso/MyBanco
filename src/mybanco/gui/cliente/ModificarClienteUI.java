@@ -1,7 +1,9 @@
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.cliente;
 
@@ -19,8 +21,11 @@ import mybanco.logica.Logica;
 import mybanco.utilidades.Archivos;
 
 /**
+ * Esta clase permite la interfaz de modificar cliente
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class ModificarClienteUI extends javax.swing.JFrame {
 
@@ -347,6 +352,9 @@ public class ModificarClienteUI extends javax.swing.JFrame {
         cbSexo.setModel(new DefaultComboBoxModel<>(Sexo.values()));
     }
 
+    /**
+     * Permite validad los campos validados
+     */
     private void modificar() {
 
         if (!validarCampos()) {
@@ -366,6 +374,11 @@ public class ModificarClienteUI extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Metodo que permite validar los campos
+     *
+     * @return campos validos
+     */
     private boolean validarCampos() {
         boolean validos = cIdentificacion.getText() != null && cNombres.getText() != null
                 && cApellidos.getText() != null && cCorreo.getText() != null
@@ -376,11 +389,17 @@ public class ModificarClienteUI extends javax.swing.JFrame {
         return validos;
     }
 
+    /**
+     * Permite la utiliacion del boton para retorcer
+     */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
     }
 
+    /**
+     * Metodo que permite cargar la informacion de un tercero
+     */
     private void cargarInformacionTercero() {
         cIdentificacion.setText(usuario.getIdentificacion());
         cNombres.setText(usuario.getNombre());

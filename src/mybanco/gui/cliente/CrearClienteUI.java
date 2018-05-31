@@ -21,7 +21,7 @@ import mybanco.logica.Logica;
 import mybanco.utilidades.Archivos;
 
 /**
- * Esta clase permite la interfaz de consiganar un ahorro
+ * Esta clase permite la interfaz de crear cliente
  *
  * @author Soraya Gonzalez
  * @author Andres Betancourt

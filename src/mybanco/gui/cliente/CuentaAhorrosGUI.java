@@ -1,15 +1,20 @@
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.cliente;
 
 import javax.swing.JOptionPane;
 
 /**
+ * Esta clase permite la interfaz de cuenta de ahorro
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CuentaAhorrosGUI extends javax.swing.JFrame {
 
@@ -179,7 +184,9 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
+/**
+ * Método que permie crear cuenta de ahorros
+ */
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -191,17 +198,23 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
         }
     }
-
+/**
+ * Metodo que del boton que retroce la vantana
+ */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
     }
-
+/**
+ * Permite la utilizacion del metodo abrir consiganar
+ */
     private void abrirConsignar() {
        this.setVisible(false);
         new ConsignarAhorrosGUI(p).setVisible(true);
     }
-
+/**
+ * Permite la utilizacion del metodo retirar ahorro
+ */
     private void retirarAhorros() {
         this.setVisible(false);
         new RetirarAhorrosGUI(p).setVisible(true);

@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.cliente;
 
@@ -16,8 +17,11 @@ import mybanco.clases.Tercero;
 import mybanco.logica.Logica;
 
 /**
+ * Esta clase contiene la ventana principal del usuario
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class PrincipalUsuarioGUI extends javax.swing.JFrame {
 
@@ -27,12 +31,12 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
     private Logica logica;
     private Tercero tercero;
     private boolean esAdmin;
-    
+
     public PrincipalUsuarioGUI(Logica logica, Tercero tercero) {
         this.logica = logica;
         this.tercero = tercero;
         initComponents();
-        
+
         msjBienvenida.setText("Hola! " + tercero.getNombre());
         setLocationRelativeTo(null);
     }
@@ -285,41 +289,53 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
     public Logica getLogica() {
         return logica;
     }
-    
+
     public void setLogica(Logica logica) {
         this.logica = logica;
     }
-    
+
     public Tercero getTercero() {
         return tercero;
     }
-    
+
     public void setTercero(Tercero tercero) {
         this.tercero = tercero;
     }
-    
+
+    /**
+     * Metodo que permite el manejo de cuenta de ahorros
+     */
     private void manejoCuentaAhorros() {
         this.setVisible(false);
         new CuentaAhorrosGUI(this).setVisible(true);
     }
-    
+
+    /**
+     * Metodo que permite el manejo de cuenta corriente
+     */
     private void manejoCuentaCorriente() {
         this.setVisible(false);
         new CuentaCorrienteGUI(this).setVisible(true);
     }
-    
+
+    /**
+     * MEtodo que permite retirar cuenta nomina
+     */
     private void retirarNomina() {
         if (!logica.existeCuentaNomina(tercero)) {
             JOptionPane.showMessageDialog(this, "Usted no tiene cuentas nomina registradas", "Error", JOptionPane.ERROR_MESSAGE);
             return;
-        }        
+        }
         this.setVisible(false);
-        new RetirarNominaGUI(this).setVisible(true);        
+        new RetirarNominaGUI(this).setVisible(true);
     }
 
+    /**
+     * MEtodo que permite modificar la informacion del usuario
+     */
     private void modificarInfo() {
         this.setVisible(false);
         new ModificarClienteUI(this).setVisible(true);
     }
-    
+
 }

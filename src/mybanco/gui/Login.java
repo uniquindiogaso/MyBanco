@@ -19,7 +19,7 @@ import mybanco.logica.Logica;
 import mybanco.utilidades.General;
 
 /**
- * Esta clase permite el manejo de cuentas
+ * Esta clase contiene la logica del proyecto
  *
  * @author Soraya Gonzalez
  * @author Andres Betancourt
@@ -284,19 +284,34 @@ public class Login extends javax.swing.JFrame {
 
     }
 
+    /**
+     * MEtodo que permite guardar al cliente
+     */
     public void guardarCliente() {
         logic.persistencia().guardarCliente(logic.getClientes());
     }
 
+    /**
+     * Metodo que permite guardar la empresa
+     */
     public void guardarEmpresa() {
         logic.persistencia().guardarEmpresa(logic.getEmpresas());
     }
 
+    /**
+     * Metodo que permite salir de la ventana
+     */
     private void salir() {
         guardarCliente();
         guardarEmpresa();
     }
 
+    /**
+     * MEtodo que permite abrir la interfaz
+     *
+     * @param usuarioLogin login del usuario
+     * @param esAdmin adminis
+     */
     private void abrirInterfaz(Tercero usuarioLogin, Boolean esAdmin) {
 
         if (esAdmin) {
@@ -318,6 +333,9 @@ public class Login extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Metodo que permite recuperar cuenta
+     */
     private void recuperarCuenta() {
         this.setVisible(true);
         new RecuperarClave(this).setVisible(true);

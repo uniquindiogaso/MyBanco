@@ -296,9 +296,10 @@ public class CdtsUI extends javax.swing.JFrame {
         }
 
     }
-/**
- * Mètodo que permite Guardar informacion de los 
- */
+
+    /**
+     * Mètodo que permite Guardar informacion de los
+     */
     private void guardar() {
 
         if (!validarCampos()) {
@@ -315,11 +316,19 @@ public class CdtsUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo que permite retroceder en la ventana
+     */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
     }
 
+    /**
+     * Metodo que permite validad campos
+     *
+     * @return campos validos
+     */
     private boolean validarCampos() {
         boolean validos = cbCliente.getSelectedItem() != null
                 && cInversion.getText() != null && fCreacion.getDate() != null
@@ -328,7 +337,9 @@ public class CdtsUI extends javax.swing.JFrame {
 
         return validos;
     }
-
+/**
+ * Metodos calcular rentabilidad de los cdts
+ */
     private void calcularRentabilidad() {
         System.out.println("Calculando Rentabilidad");
         Double rentabilidad = 0.0;
@@ -346,7 +357,7 @@ public class CdtsUI extends javax.swing.JFrame {
                 int dias = Integer.valueOf(cDuracion.getText());
                 Date fRetiro = Fechas.sumarDiasFecha(fCreacion.getDate(), dias);
                 int periodo = Fechas.mesesEntreFechas(fCreacion.getDate(), fRetiro);
-                
+
                 rentabilidad = General.calcularRentabilidadVencimiento(vp, tasa, periodo);
                 cRentabilidad.setText(String.valueOf(rentabilidad));
             }
