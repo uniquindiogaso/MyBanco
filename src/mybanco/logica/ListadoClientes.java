@@ -1,3 +1,11 @@
+
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
+
 package mybanco.logica;
 
 import java.util.ArrayList;
@@ -8,8 +16,11 @@ import mybanco.clases.Cliente;
 import mybanco.gui.admin.ListaConcurrenteGUI;
 
 /**
+ * Esta clase permite cargar listado de los clienes del banco
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class ListadoClientes extends Thread{
     
@@ -26,7 +37,9 @@ public class ListadoClientes extends Thread{
         listar();
     }
     
-    
+    /**
+     * Metodo que permite listar los clientes en hilos
+     */
     public void listar(){
         DefaultListModel<Cliente> model = new DefaultListModel<>();
         gui.getListadoClientes().setModel(model);

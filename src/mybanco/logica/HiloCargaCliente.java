@@ -1,3 +1,9 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.logica;
 
 import java.io.BufferedReader;
@@ -11,8 +17,11 @@ import mybanco.enums.Sexo;
 import mybanco.utilidades.Fechas;
 
 /**
+ * Esta clase permite cargar lo hilos co los clintes
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class HiloCargaCliente extends Thread {
 

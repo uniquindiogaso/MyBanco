@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.admin;
 
@@ -19,8 +20,11 @@ import mybanco.logica.HiloCargaCliente;
 import mybanco.logica.Logica;
 
 /**
+ * Esta clase esa la intefaz de Clista de cocurrentes
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class PrincipalAdmin extends javax.swing.JFrame {
 
@@ -274,6 +278,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         logica.persistencia().guardarCDTS(logica.getCdts());
     }
 
+    /**
+     * Metodo que permite cargar las carpetas con los clientes
+     */
     private void cargarClientes() {
         JFileChooser jfC = new JFileChooser();
         FileNameExtensionFilter soloTxt = new FileNameExtensionFilter("*.txt", "txt", "text");
@@ -332,6 +339,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     }
 
+    /**
+     * MEtodo que permite ingrear dinero cdts
+     */
     private void dineroCdts() {
         Double dinero = 0.0;
         for (Cdt cdt : logica.getCdts()) {
@@ -341,6 +351,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, msj, "Dinero en CDTs", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Metodo que permite conocer los intereces del mes
+     */
     private void interesMes() {
         double interes = 0.0;
         for (Cuenta c : logica.getCuentas()) {

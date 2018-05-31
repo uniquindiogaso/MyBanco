@@ -1,17 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.admin;
 
 import javax.swing.JList;
 import mybanco.logica.ListadoCDTS;
 import mybanco.logica.ListadoClientes;
-
 /**
+ * Esta clase esa la intefaz de Clista de cocurrentes 
  *
- * @author gusta
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class ListaConcurrenteGUI extends javax.swing.JFrame {
 
@@ -200,12 +203,16 @@ public class ListaConcurrenteGUI extends javax.swing.JFrame {
         //centrar ventana
         this.setLocationRelativeTo(null);
     }
-
+/**
+ * este metodo permite regresar la ventana
+ */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
     }
-
+/**
+ * Este metoodo prmte generar un listado de clientes mediante hilos
+ */
     private void generar() {
         ListadoClientes lClientes = new ListadoClientes(this);
         ListadoCDTS lCdts = new ListadoCDTS(this);
