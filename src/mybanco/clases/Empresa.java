@@ -21,4 +21,10 @@ public class Empresa extends Tercero implements Serializable {
         super(nombre, identificacion, clave);
     }
 
+    @Override
+    public String toString() {
+        return super.getNombre();
+    }
+
+    
 }

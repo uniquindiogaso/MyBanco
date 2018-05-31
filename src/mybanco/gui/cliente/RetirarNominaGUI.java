@@ -191,8 +191,8 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 /**
- * Metodo que permite crear cuentas de ahorro
- */
+     * Metodo que permite crear cuentas de ahorro
+     */
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -204,12 +204,14 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
         }
     }
-/**
- * Este metodo permite retroceder en la ventana
- */
+
+    /**
+     * Este metodo permite retroceder en la ventana
+     */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+        p.cargarTablas();
     }
 
     private void initOtherComponets() {
@@ -221,9 +223,10 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
             cbCuentasNomina.addItem(c);
         }
     }
-/**
- * Este metodo permite retirar dela cuentas de nomina
- */
+
+    /**
+     * Este metodo permite retirar dela cuentas de nomina
+     */
     private void retirar() {
         if (cbCuentasNomina.getSelectedItem() == null || cValor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar la consignacion", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);

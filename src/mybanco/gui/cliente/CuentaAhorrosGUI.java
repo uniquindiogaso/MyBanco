@@ -204,6 +204,7 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+        p.cargarTablas();
     }
 /**
  * Permite la utilizacion del metodo abrir consiganar
