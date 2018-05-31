@@ -163,6 +163,11 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
 
         bActualizarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mybanco/gui/icons/editar.png"))); // NOI18N
         bActualizarInfo.setToolTipText("Actualizar Información");
+        bActualizarInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bActualizarInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,6 +224,10 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
     private void bRetiroNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetiroNominaActionPerformed
         retirarNomina();
     }//GEN-LAST:event_bRetiroNominaActionPerformed
+
+    private void bActualizarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarInfoActionPerformed
+        modificarInfo();
+    }//GEN-LAST:event_bActualizarInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,6 +315,11 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
         }        
         this.setVisible(false);
         new RetirarNominaGUI(this).setVisible(true);        
+    }
+
+    private void modificarInfo() {
+        this.setVisible(false);
+        new ModificarClienteUI(this).setVisible(true);
     }
     
 }

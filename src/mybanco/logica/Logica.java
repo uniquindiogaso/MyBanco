@@ -68,6 +68,29 @@ public class Logica {
         return cliente;
     }
 
+    public boolean modificarCliente(Cliente c) {
+        int pos = -1;
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getIdentificacion().equals(c.getIdentificacion())) {
+                pos = i;
+                break;
+            }
+        }
+
+        if (pos != -1) {
+            clientes.get(pos).setNombre(c.getNombre());
+            clientes.get(pos).setApellido(c.getApellido());
+            clientes.get(pos).setCorreo(c.getCorreo());
+            clientes.get(pos).setSexo(c.getSexo());
+            clientes.get(pos).setfNacimiento(c.getfNacimiento());
+            clientes.get(pos).setUsuario(c.getUsuario());
+            clientes.get(pos).setClave(c.getClave());
+            clientes.get(pos).setResSeguridad(c.getResSeguridad());
+        }
+
+        return true;
+    }
+
     public ArrayList<Cuenta> cuentasAhorrosUsuario(Tercero t) {
         ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
@@ -191,6 +214,24 @@ public class Logica {
         return false;
     }
 
+    public boolean existeCuentaNomina(Tercero tercero) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaNomina && cuenta.getTercero().getIdentificacion().equals(tercero.getIdentificacion())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean validarSiExisteCliente(String identificacion) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getIdentificacion().equals(identificacion)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
@@ -225,15 +266,6 @@ public class Logica {
 
     public Archivos persistencia() {
         return archivos;
-    }
-
-    public boolean existeCuentaNomina(Tercero tercero) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta instanceof CuentaNomina && cuenta.getTercero().getIdentificacion().equals(tercero.getIdentificacion())) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }
