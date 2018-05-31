@@ -10,6 +10,7 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import mybanco.clases.Cliente;
 import mybanco.enums.Sexo;
 import mybanco.logica.Logica;
@@ -20,7 +21,6 @@ import mybanco.utilidades.Archivos;
  * @author sori
  */
 public class ClienteUI extends javax.swing.JFrame {
-
 
     private Login login;
 
@@ -108,7 +108,6 @@ public class ClienteUI extends javax.swing.JFrame {
         jLabel11.setText("Clave");
 
         cClave.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        cClave.setText("jPasswordField1");
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel12.setText("Nombre Primer Empleo");
@@ -253,17 +252,17 @@ public class ClienteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void cFNacimientoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cFNacimientoFocusLost
-       //tODO ELIMINAR!
+        //tODO ELIMINAR!
     }//GEN-LAST:event_cFNacimientoFocusLost
 
     private void cFNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cFNacimientoPropertyChange
-       System.out.println("Calcular Edad cFNacimientoPropertyChange" );
-       Date fNacimiento = cFNacimiento.getDate();
-       if ( fNacimiento != null){
-           LocalDate fNacimientoLocalDate = fNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-           Period tiempoTranscurrido = Period.between(fNacimientoLocalDate, LocalDate.now());
-           cEdad.setText(String.valueOf(tiempoTranscurrido.getYears()));       
-       }
+        System.out.println("Calcular Edad cFNacimientoPropertyChange");
+        Date fNacimiento = cFNacimiento.getDate();
+        if (fNacimiento != null) {
+            LocalDate fNacimientoLocalDate = fNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Period tiempoTranscurrido = Period.between(fNacimientoLocalDate, LocalDate.now());
+            cEdad.setText(String.valueOf(tiempoTranscurrido.getYears()));
+        }
     }//GEN-LAST:event_cFNacimientoPropertyChange
 
     /**
@@ -335,18 +334,32 @@ public class ClienteUI extends javax.swing.JFrame {
     }
 
     private void guardar() {
+
+        if (!validarCampos()) {
+            JOptionPane.showMessageDialog(this, "Para Guardar el Cliente debe diligenciar todos los campos.", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         Cliente cliente = new Cliente(cApellidos.getText(), Integer.valueOf(cEdad.getText()), (Sexo) cbSexo.getSelectedItem(), cUsuario.getText(), cFNacimiento.getDate(), cCorreo.getText(), cRespuesta.getText(), cNombres.getText(), cIdentificacion.getText(), new String(cClave.getPassword()));
         boolean ok = login.getLogic().getClientes().add(cliente);
-        if (ok){
-            //mensaje de que se guardo correctamente
-            System.out.println("Se guardo Correctamente");
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente. ¡Ya puede iniciar sesión!", "Se guardo Correctamente", JOptionPane.INFORMATION_MESSAGE);
             login.guardarCliente();
             atras();
-        }else{
-            //mensaje que no se guardo, que hubo errores
-            System.out.println("No se logro guardar el Cliente");
+        } else {
+JOptionPane.showMessageDialog(this, "Problemas creando Cliente, por favor consultar con Administrador.", "Error Creando Cliente", JOptionPane.ERROR_MESSAGE);
         }
-                
+
+    }
+
+    private boolean validarCampos() {
+        boolean validos = cIdentificacion.getText() != null && cNombres.getText() != null
+                && cApellidos.getText() != null && cCorreo.getText() != null
+                && cbSexo.getSelectedItem() != null && cFNacimiento.getDate() != null
+                && cUsuario.getText() != null && cClave.getPassword() != null
+                && !cRespuesta.getText().isEmpty();
+
+        return validos;
     }
 
     private void atras() {

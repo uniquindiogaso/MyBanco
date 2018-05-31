@@ -57,6 +57,7 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        bActualizarInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,14 +161,13 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
 
         contenedorTablas.addTab("CDT's", jPanel4);
 
+        bActualizarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mybanco/gui/icons/editar.png"))); // NOI18N
+        bActualizarInfo.setToolTipText("Actualizar Información");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(msjBienvenida)
-                .addGap(214, 214, 214))
             .addGroup(layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -176,15 +176,24 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
                     .addComponent(bRetiroNomina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contenedorTablas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(contenedorTablas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(msjBienvenida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bActualizarInfo)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(msjBienvenida)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msjBienvenida)
+                    .addComponent(bActualizarInfo))
                 .addGap(34, 34, 34)
                 .addComponent(bCuentaAhorros)
                 .addGap(18, 18, 18)
@@ -250,6 +259,7 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bActualizarInfo;
     private javax.swing.JButton bCuentaAhorros;
     private javax.swing.JButton bCuentaCorriente;
     private javax.swing.JButton bRetiroNomina;

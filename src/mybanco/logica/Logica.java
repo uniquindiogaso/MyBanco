@@ -57,13 +57,15 @@ public class Logica {
         return usuario;
     }
 
-    public void recuperarClave(String identif, String respuesta) {
+    public Cliente recuperarClave(String identif, String respuesta) {
+        Cliente cliente = null;
         for (Cliente c : clientes) {
             if (c.getIdentificacion().equals(identif) && c.getResSeguridad().toLowerCase().equals(respuesta.toLowerCase())) {
-                //imprimir msj con JOption
-                System.out.println("Su clave es : " + c.getClave());
+                cliente = c;
             }
         }
+
+        return cliente;
     }
 
     public ArrayList<Cuenta> cuentasAhorrosUsuario(Tercero t) {
