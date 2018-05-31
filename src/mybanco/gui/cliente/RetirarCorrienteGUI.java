@@ -233,6 +233,7 @@ public class RetirarCorrienteGUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+        p.cargarTablas();
     }
 
     private void initOtherComponets() {

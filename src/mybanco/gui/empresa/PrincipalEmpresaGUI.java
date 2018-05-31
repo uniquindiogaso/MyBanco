@@ -241,7 +241,7 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
      * se mostrara todas las cuentas para la Empresa Actual
      */
     public void cargarTabla() {
-        TablaCuentasNomina tablaModel = new TablaCuentasNomina(logica.obtenerCuentasNomina(tercero));
+        TablaCuentasNomina tablaModel = new TablaCuentasNomina(logica.obtenerCuentasNominaEmpresa(tercero));
         tablaNomina.setModel(tablaModel);
     }
     

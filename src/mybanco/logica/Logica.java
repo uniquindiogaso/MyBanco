@@ -170,6 +170,16 @@ public class Logica {
         System.out.println("Cuentas corrientes para Usuario: " + res.size());
         return res;
     }
+    
+    public ArrayList<Cdt> cdtsUsuario(Tercero t){
+         ArrayList<Cdt> res = new ArrayList<>();
+         for(Cdt cdt : cdts){
+             if ( cdt.getCliente().getIdentificacion().equals(t.getIdentificacion())){
+                 res.add(cdt);
+             }
+         }
+         return res;
+    }
 
     /**
      * Metodo que permite actualizar el monto de la cuenta de ahorros
@@ -351,7 +361,7 @@ public class Logica {
      * @param empresa empresa
      * @return nominas de la empresa
      */
-    public ArrayList<CuentaNomina> obtenerCuentasNomina(Tercero empresa) {
+    public ArrayList<CuentaNomina> obtenerCuentasNominaEmpresa(Tercero empresa) {
         ArrayList<CuentaNomina> nominas = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
             if (cuenta instanceof CuentaNomina) {
