@@ -50,7 +50,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="bCancelar" pref="150" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="cbCuentasAhorros" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbCuentasNomina" alignment="0" max="32767" attributes="0"/>
                           <Component id="cValor" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -67,7 +67,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="cbCuentasAhorros" min="-2" max="-2" attributes="0"/>
+              <Component id="cbCuentasNomina" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
         <Property name="text" type="java.lang.String" value="Numero de Cuenta Nomina"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cbCuentasAhorros">
+    <Component class="javax.swing.JComboBox" name="cbCuentasNomina">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="24" style="0"/>

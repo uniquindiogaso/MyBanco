@@ -2,3 +2,4 @@ $ cat .gitignore
 build/*
 dist/*
 test/*
+/nbproject/

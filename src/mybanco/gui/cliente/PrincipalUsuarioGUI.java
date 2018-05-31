@@ -8,6 +8,7 @@ package mybanco.gui.cliente;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import mybanco.clases.Cliente;
 import mybanco.clases.Empresa;
@@ -26,7 +27,7 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
     private Logica logica;
     private Tercero tercero;
     private boolean esAdmin;
-
+    
     public PrincipalUsuarioGUI(Logica logica, Tercero tercero) {
         this.logica = logica;
         this.tercero = tercero;
@@ -80,6 +81,11 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
 
         bRetiroNomina.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         bRetiroNomina.setText("Retiro Nomina");
+        bRetiroNomina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRetiroNominaActionPerformed(evt);
+            }
+        });
 
         contenedorTablas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
@@ -201,6 +207,10 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
         manejoCuentaCorriente();
     }//GEN-LAST:event_bCuentaCorrienteActionPerformed
 
+    private void bRetiroNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetiroNominaActionPerformed
+        retirarNomina();
+    }//GEN-LAST:event_bRetiroNominaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,30 +266,36 @@ public class PrincipalUsuarioGUI extends javax.swing.JFrame {
     public Logica getLogica() {
         return logica;
     }
-
+    
     public void setLogica(Logica logica) {
         this.logica = logica;
     }
-
+    
     public Tercero getTercero() {
         return tercero;
     }
-
+    
     public void setTercero(Tercero tercero) {
         this.tercero = tercero;
     }
-       
-
+    
     private void manejoCuentaAhorros() {
         this.setVisible(false);
         new CuentaAhorrosGUI(this).setVisible(true);
     }
-
+    
     private void manejoCuentaCorriente() {
-       this.setVisible(false);
+        this.setVisible(false);
         new CuentaCorrienteGUI(this).setVisible(true);
     }
     
+    private void retirarNomina() {
+        if (!logica.existeCuentaNomina(tercero)) {
+            JOptionPane.showMessageDialog(this, "Usted no tiene cuentas nomina registradas", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }        
+        this.setVisible(false);
+        new RetirarNominaGUI(this).setVisible(true);        
+    }
     
-
 }

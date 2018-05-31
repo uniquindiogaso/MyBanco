@@ -77,6 +77,17 @@ public class Logica {
         return res;
     }
 
+    public ArrayList<Cuenta> cuentasNominaUsuario(Tercero t) {
+        ArrayList<Cuenta> res = new ArrayList<>();
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaNomina && cuenta.getTercero().getIdentificacion().equals(t.getIdentificacion())) {
+                res.add(cuenta);
+            }
+        }
+        System.out.println("Cuentas Nomina para Usuario: " + res.size());
+        return res;
+    }
+
     public ArrayList<Cuenta> cuentasCorrientesUsuario(Tercero t) {
         ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
@@ -116,8 +127,7 @@ public class Logica {
         }
         return false;
     }
-    
-    
+
     public boolean actualizarMontoCuentaNomina(String numCuenta, Double monto) {
         for (Cuenta cuenta : cuentas) {
             if (cuenta.getNumero().equals(numCuenta)) {
@@ -128,7 +138,7 @@ public class Logica {
             }
         }
         return false;
-    }    
+    }
 
     public String crearCuentaAhorros(Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
@@ -213,6 +223,15 @@ public class Logica {
 
     public Archivos persistencia() {
         return archivos;
+    }
+
+    public boolean existeCuentaNomina(Tercero tercero) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaNomina && cuenta.getTercero().getIdentificacion().equals(tercero.getIdentificacion())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

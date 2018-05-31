@@ -18,7 +18,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
         this.p = p;
         initComponents();
         initOtherComponets();
-        
+
     }
 
     /**
@@ -34,7 +34,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
         bCancelar = new javax.swing.JButton();
         bRetirar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        cbCuentasAhorros = new javax.swing.JComboBox();
+        cbCuentasNomina = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         cValor = new javax.swing.JTextField();
 
@@ -62,8 +62,8 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Numero de Cuenta Nomina");
 
-        cbCuentasAhorros.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        cbCuentasAhorros.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCuentasNomina.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        cbCuentasNomina.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel3.setText("Valor a Retirar");
@@ -95,7 +95,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
                                 .addComponent(bRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                            .addComponent(cbCuentasAhorros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbCuentasNomina, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cValor))))
                 .addContainerGap())
         );
@@ -107,7 +107,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbCuentasAhorros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbCuentasNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -123,11 +123,11 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-       atras();
+        atras();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetirarActionPerformed
-        consignar();
+        retirar();
     }//GEN-LAST:event_bRetirarActionPerformed
 
     /**
@@ -176,7 +176,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bRetirar;
     private javax.swing.JTextField cValor;
-    private javax.swing.JComboBox cbCuentasAhorros;
+    private javax.swing.JComboBox cbCuentasNomina;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -188,7 +188,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
             //mostrar mensaje aca
             System.out.println("Su Num de Cuenta de Ahorros es " + res + " Por favor no la pierda!");
             JOptionPane.showMessageDialog(p.getContentPane(), "El numero de Cuenta de ahorros es " + res + ".\nPor favor anote este numero ya que sera fundamental para realizar transacciones.");
-            
+
             //persistiendo informacion en archivos
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
         }
@@ -201,32 +201,37 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
 
     private void initOtherComponets() {
         //centrar pantalla
-        setLocationRelativeTo(null);       
+        setLocationRelativeTo(null);
         //borrar contenido combobox
-        cbCuentasAhorros.removeAllItems();
-        for( Cuenta c : p.getLogica().cuentasAhorrosUsuario(p.getTercero())){
-            cbCuentasAhorros.addItem(c);
+        cbCuentasNomina.removeAllItems();
+        for (Cuenta c : p.getLogica().cuentasNominaUsuario(p.getTercero())) {
+            cbCuentasNomina.addItem(c);
         }
     }
 
-    private void consignar() {
-        if( cbCuentasAhorros.getSelectedItem() == null || cValor.getText().isEmpty()){
+    private void retirar() {
+        if (cbCuentasNomina.getSelectedItem() == null || cValor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar la consignacion", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        Double valorConsignar = Double.valueOf(cValor.getText());
-        Cuenta cuenta = (Cuenta)cbCuentasAhorros.getSelectedItem();
-        
-       boolean ok = p.getLogica().actualizarMontoCuentaAhorros(cuenta, valorConsignar,null);
-       
-       if ( ok ){
-           JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
-           setVisible(false);
-           p.setVisible(true);           
-       }else{
-           JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
-       }
+
+        Double valorRetiro = Double.valueOf(cValor.getText());
+        Cuenta cuenta = (Cuenta) cbCuentasNomina.getSelectedItem();
+
+        if (valorRetiro > cuenta.getMonto()) {
+            JOptionPane.showMessageDialog(this, "Saldo Insuficiente. Cuenta con $" + cuenta.getMonto() + " en la cuenta.", "Monto a retirar supera dinero en la cuenta.", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        boolean ok = p.getLogica().actualizarMontoCuentaNomina(cuenta.getNumero(), -valorRetiro);
+
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
+            setVisible(false);
+            p.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }
