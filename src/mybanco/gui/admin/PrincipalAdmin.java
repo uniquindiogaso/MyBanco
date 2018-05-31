@@ -6,12 +6,16 @@
 package mybanco.gui.admin;
 
 import java.io.File;
-import java.util.ArrayList;
+import javax.print.attribute.standard.Chromaticity;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import mybanco.clases.Cdt;
 import mybanco.clases.Cliente;
-import mybanco.clases.Empresa;
+import mybanco.clases.Cuenta;
+import mybanco.clases.CuentaAhorros;
 import mybanco.clases.Tercero;
+import mybanco.logica.HiloCargaCliente;
 import mybanco.logica.Logica;
 
 /**
@@ -29,7 +33,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     public PrincipalAdmin(Logica logica) {
         this.logica = logica;
-        
+
         initComponents();
         msjBienvenida.setText("Hola! Usuario Admin");
         esAdmin = true;
@@ -49,6 +53,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        msjBienvenida1 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +89,41 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jButton4.setText("Listados Concurrentes");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        msjBienvenida1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        msjBienvenida1.setText("Informes");
+
+        jButton5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jButton5.setText("Intereses Pagados Mes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jButton6.setText("Cliente Fiel");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jButton7.setText("Dinero Almacenado CDTS");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,8 +137,24 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(msjBienvenida1)
+                .addGap(220, 220, 220))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,10 +164,22 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addComponent(jButton1)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(msjBienvenida1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,12 +190,28 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       registrarCDT();
+        registrarCDT();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        listadoClientes();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        interesMes();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        clienteFiel();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        dineroCdts();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,7 +253,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel msjBienvenida;
+    private javax.swing.JLabel msjBienvenida1;
     // End of variables declaration//GEN-END:variables
 
     public Logica getLogica() {
@@ -174,27 +269,96 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     public void setLogica(Logica logica) {
         this.logica = logica;
     }
-    
-    
-    public void guardarCdt(){
+
+    public void guardarCdt() {
         logica.persistencia().guardarCDTS(logica.getCdts());
     }
-    
+
     private void cargarClientes() {
         JFileChooser jfC = new JFileChooser();
         FileNameExtensionFilter soloTxt = new FileNameExtensionFilter("*.txt", "txt", "text");
         jfC.setFileFilter(soloTxt);
         jfC.showOpenDialog(this);
         File abre = jfC.getSelectedFile();
-        if(abre != null){
-           ArrayList<Cliente> clientes = logica.persistencia().cargarClientes(abre.getAbsolutePath());
-           logica.getClientes().addAll(clientes);
-           logica.persistencia().guardarCliente(logica.getClientes());
-        }       
+        if (abre != null) {
+            HiloCargaCliente leer1 = new HiloCargaCliente(abre, logica, 10);
+            HiloCargaCliente leer2 = new HiloCargaCliente(abre, logica, 20);
+            HiloCargaCliente leer3 = new HiloCargaCliente(abre, logica, 30);
+            HiloCargaCliente leer4 = new HiloCargaCliente(abre, logica, 40);
+            HiloCargaCliente leer5 = new HiloCargaCliente(abre, logica, 50);
+
+            leer1.start();
+            leer2.start();
+            leer3.start();
+            leer4.start();
+            leer5.start();
+        }
     }
 
     private void registrarCDT() {
         this.setVisible(false);
         new CdtsUI(this).setVisible(true);
+    }
+
+    private void listadoClientes() {
+        this.setVisible(false);
+        new ListaConcurrenteGUI(this).setVisible(true);
+    }
+
+    /**
+     * Buscar el Cliente con mayor cantidad de cuentas creadas
+     */
+    private void clienteFiel() {
+        Cliente fiel = null;
+        int maxCuentas = 0;
+
+        for (Cliente c : logica.getClientes()) {
+            Tercero cliente = (Tercero) c;
+            int cuentasAhorros = logica.cuentasAhorrosUsuario(cliente).size();
+            int cuentasCorriente = logica.cuentasCorrientesUsuario(cliente).size();
+            int cuentasNomina = logica.cuentasNominaUsuario(cliente).size();
+            int numCuentasCliente = cuentasAhorros + cuentasCorriente + cuentasNomina;
+
+            if (numCuentasCliente > maxCuentas) {
+                maxCuentas = numCuentasCliente;
+                fiel = c;
+            }
+        }
+
+        if (fiel != null) {
+            String msj = "El cliente con mayor numero de cuentas es " + fiel.getNombre() + " con un total de " + maxCuentas + " cuentas.";
+            JOptionPane.showMessageDialog(null, msj, "Cliente Fiel", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+
+    private void dineroCdts() {
+        Double dinero = 0.0;
+        for (Cdt cdt : logica.getCdts()) {
+            dinero += cdt.getInversion();
+        }
+        String msj = "El dinero almacenado en los CDTS es $" + dinero;
+        JOptionPane.showMessageDialog(null, msj, "Dinero en CDTs", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void interesMes() {
+        double interes = 0.0;
+        for (Cuenta c : logica.getCuentas()) {
+            if (c instanceof CuentaAhorros) {
+                if (c.getMonto() >= 0.1 && c.getMonto() <= 5000000) {
+                    double valorCuentaInteres = 0.01 * c.getMonto();
+                    interes = interes + valorCuentaInteres;
+                } else if (c.getMonto() > 5000000 && c.getMonto() <= 20000000) {
+                    double valorCuentaInteres = 0.02 * c.getMonto();
+                    interes = interes + valorCuentaInteres;
+                } else if (c.getMonto() > 20000000) {
+                    double valorCuentaInteres = 0.03 * c.getMonto();
+                    interes = interes + valorCuentaInteres;
+                }
+            }
+        }
+
+        String msj = "El dinero que se debe pagar por Concepto de Interes a Cuentas Ahorros es $" + interes;
+        JOptionPane.showMessageDialog(null, msj, "Interes Cuentas Ahorros", JOptionPane.INFORMATION_MESSAGE);
     }
 }
