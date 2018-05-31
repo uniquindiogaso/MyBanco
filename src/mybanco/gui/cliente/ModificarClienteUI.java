@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mybanco.gui;
+package mybanco.gui.cliente;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -12,7 +12,9 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import mybanco.clases.Cliente;
+import mybanco.clases.Tercero;
 import mybanco.enums.Sexo;
+import mybanco.gui.Login;
 import mybanco.logica.Logica;
 import mybanco.utilidades.Archivos;
 
@@ -20,14 +22,19 @@ import mybanco.utilidades.Archivos;
  *
  * @author sori
  */
-public class ClienteUI extends javax.swing.JFrame {
+public class ModificarClienteUI extends javax.swing.JFrame {
 
-    private Login login;
+    private Logica logica;
+    private Cliente usuario;
+    private PrincipalUsuarioGUI p;
 
-    public ClienteUI(Login login) {
-        this.login = login;
+    public ModificarClienteUI(PrincipalUsuarioGUI p) {
+        this.p = p;
+        logica = p.getLogica();
+        usuario = (Cliente) p.getTercero();
         initComponents();
         initOtherComponets();
+        cargarInformacionTercero();
     }
 
     /**
@@ -77,6 +84,7 @@ public class ClienteUI extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel5.setText("Identificacion");
 
+        cIdentificacion.setEditable(false);
         cIdentificacion.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -123,7 +131,7 @@ public class ClienteUI extends javax.swing.JFrame {
         });
 
         bGuardar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        bGuardar.setText("Guardar");
+        bGuardar.setText("Modificar");
         bGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGuardarActionPerformed(evt);
@@ -244,7 +252,7 @@ public class ClienteUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        guardar();
+        modificar();
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -282,21 +290,27 @@ public class ClienteUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarClienteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ClienteUI().setVisible(true);
+                //new CrearClienteUI().setVisible(true);
             }
         });
     }
@@ -333,7 +347,7 @@ public class ClienteUI extends javax.swing.JFrame {
         cbSexo.setModel(new DefaultComboBoxModel<>(Sexo.values()));
     }
 
-    private void guardar() {
+    private void modificar() {
 
         if (!validarCampos()) {
             JOptionPane.showMessageDialog(this, "Para Guardar el Cliente debe diligenciar todos los campos.", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
@@ -341,13 +355,13 @@ public class ClienteUI extends javax.swing.JFrame {
         }
 
         Cliente cliente = new Cliente(cApellidos.getText(), Integer.valueOf(cEdad.getText()), (Sexo) cbSexo.getSelectedItem(), cUsuario.getText(), cFNacimiento.getDate(), cCorreo.getText(), cRespuesta.getText(), cNombres.getText(), cIdentificacion.getText(), new String(cClave.getPassword()));
-        boolean ok = login.getLogic().getClientes().add(cliente);
+        boolean ok = p.getLogica().modificarCliente(cliente);
         if (ok) {
-            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente. ¡Ya puede iniciar sesión!", "Se guardo Correctamente", JOptionPane.INFORMATION_MESSAGE);
-            login.guardarCliente();
+            JOptionPane.showMessageDialog(this, "Cliente actualizado correctamente!.", "Se Modifico Correctamente", JOptionPane.INFORMATION_MESSAGE);
+            p.getLogica().persistencia().guardarCliente(p.getLogica().getClientes());
             atras();
         } else {
-JOptionPane.showMessageDialog(this, "Problemas creando Cliente, por favor consultar con Administrador.", "Error Creando Cliente", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Problemas actualizando Cliente, por favor consultar con Administrador.", "Error Modificando Cliente", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -364,6 +378,18 @@ JOptionPane.showMessageDialog(this, "Problemas creando Cliente, por favor consul
 
     private void atras() {
         this.setVisible(false);
-        login.setVisible(true);
+        p.setVisible(true);
+    }
+
+    private void cargarInformacionTercero() {
+        cIdentificacion.setText(usuario.getIdentificacion());
+        cNombres.setText(usuario.getNombre());
+        cApellidos.setText(usuario.getApellido());
+        cCorreo.setText(usuario.getCorreo());
+        cbSexo.setSelectedItem(usuario.getSexo());
+        cFNacimiento.setDate(usuario.getfNacimiento());
+        cUsuario.setText(usuario.getUsuario());
+        cClave.setText(usuario.getClave());
+        cRespuesta.setText(usuario.getResSeguridad());
     }
 }

@@ -5,6 +5,7 @@
  */
 package mybanco.gui;
 
+import mybanco.gui.cliente.CrearClienteUI;
 import mybanco.gui.empresa.CrearEmpresaGUI;
 import javax.swing.JOptionPane;
 import mybanco.clases.Cliente;
@@ -262,7 +263,7 @@ public class Login extends javax.swing.JFrame {
             switch (tipo[crear]) {
                 case "Cliente":
                     this.setVisible(false);
-                    new ClienteUI(this).setVisible(true);
+                    new CrearClienteUI(this).setVisible(true);
                     break;
                 case "Empresa":
                     this.setVisible(false);

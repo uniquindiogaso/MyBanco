@@ -249,6 +249,9 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Actualizar Informaci&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bActualizarInfoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
