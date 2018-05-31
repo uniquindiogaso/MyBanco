@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.utilidades;
 
@@ -25,12 +26,17 @@ import mybanco.clases.Empresa;
 import mybanco.enums.Sexo;
 
 /**
+ * Esta clase permite el Manejo de Persistencia en Archivos
  *
- * @author Sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class Archivos {
 
-    //Ruta del Usuario
+    /**
+     * Ruta del Usuario
+     */
     String rutaApp = System.getProperty("user.home") + System.getProperty("file.separator") + "MyBanco" + System.getProperty("file.separator");
 
     public final String CLIENTES = rutaApp + "clientes.sori";
@@ -43,6 +49,12 @@ public class Archivos {
 
     }
 
+    /**
+     * Mètodo Guardar Cliente
+     *
+     * @param clientes arreglo de clientes
+     * @return boolean
+     */
     public boolean guardarCliente(ArrayList<Cliente> clientes) {
         System.out.println("Archivo Clientes se guardara en:  " + CLIENTES);
         FileOutputStream ficheroSalida = null;
@@ -68,6 +80,12 @@ public class Archivos {
         return false;
     }
 
+    /**
+     * Método para Guardar Empresa
+     *
+     * @param empresas arreglo de empresas
+     * @return boolean
+     */
     public boolean guardarEmpresa(ArrayList<Empresa> empresas) {
         System.out.println("Archivo empresas se guardara en:  " + EMPRESAS);
         FileOutputStream ficheroSalida = null;
@@ -93,6 +111,12 @@ public class Archivos {
         return false;
     }
 
+    /**
+     * Método para Guardar Cuentas
+     *
+     * @param cuentas arreglo de cuentas
+     * @return boolean
+     */
     public boolean guardarCuentas(ArrayList<Cuenta> cuentas) {
         System.out.println("Archivo cuentas se guardara en:  " + CUENTAS);
         FileOutputStream ficheroSalida = null;
@@ -118,6 +142,12 @@ public class Archivos {
         return false;
     }
 
+    /**
+     * Método para Guardar CDTS
+     *
+     * @param cdts arreglo de cdts
+     * @return boolean
+     */
     public boolean guardarCDTS(ArrayList<Cdt> cdts) {
         System.out.println("Archivo CDTS se guardara en:  " + CDT);
         FileOutputStream ficheroSalida = null;
@@ -143,6 +173,11 @@ public class Archivos {
         return false;
     }
 
+    /**
+     * Método Obtener Clientes
+     *
+     * @return Obtiene un arreglo de clientes
+     */
     public ArrayList<Cliente> obtenerClientes() {
         System.out.println("Obtener de Clientes de " + CLIENTES);
         FileInputStream ficheroEntrada = null;
@@ -170,6 +205,11 @@ public class Archivos {
         return res;
     }
 
+    /**
+     * Método Obtener Empresa
+     *
+     * @return Arreglo para obtener Empresas
+     */
     public ArrayList<Empresa> obtenerEmpresas() {
         FileInputStream ficheroEntrada = null;
         ArrayList<Empresa> res = new ArrayList<>();
@@ -195,6 +235,11 @@ public class Archivos {
         return res;
     }
 
+    /**
+     * Metodo Obtener Cuentas
+     *
+     * @return Obtiene arreglo de cuentas
+     */
     public ArrayList<Cuenta> obtenerCuentas() {
         FileInputStream ficheroEntrada = null;
         ArrayList<Cuenta> res = new ArrayList<>();
@@ -220,8 +265,14 @@ public class Archivos {
         return res;
     }
 
+    /**
+     * Mètodo para obtener cdts
+     *
+     * @return Arreglo para obtener CDTS
+     */
     public ArrayList<Cdt> obtenerCdts() {
-        FileInputStream ficheroEntrada = null;
+        FileInputStream ficheroEntrada
+                = null;
         ArrayList<Cdt> res = new ArrayList<>();
         try {
             ficheroEntrada = new FileInputStream(CUENTAS);
@@ -245,6 +296,12 @@ public class Archivos {
         return res;
     }
 
+    /**
+     * Mètodo para cargar los Clientes
+     *
+     * @param ruta
+     * @return clientes
+     */
     public ArrayList<Cliente> cargarClientes(String ruta) {
         String linea = "";
 
@@ -283,7 +340,10 @@ public class Archivos {
     }
 
     /**
-     * Comprobar la existencia del archivito si no existe crear uno vacio
+     * Mètodo para comprobar la existencia de Archivos
+     *
+     * @param ruta
+     * @return la ruta del archivo
      */
     private void comprobarExistenciaArchivos(String ruta) {
         File archivo = new File(ruta);
@@ -299,6 +359,11 @@ public class Archivos {
         }
     }
 
+    /**
+     * Mètodo para comprobar la existencia de la Carpeta
+     *
+     * @param ruta
+     */
     private void comprobarExistenciaCarpeta(String ruta) {
         File carpeta = new File(ruta);
         if (carpeta.isDirectory() && !carpeta.exists()) {
@@ -306,6 +371,9 @@ public class Archivos {
         }
     }
 
+    /**
+     * Mètodo que permite crear rutas si no existen
+     */
     private void crearRutasSinoExiste() {
         comprobarExistenciaCarpeta(rutaApp);
         comprobarExistenciaArchivos(CLIENTES);

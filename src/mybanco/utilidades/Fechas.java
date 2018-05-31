@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.utilidades;
 
@@ -14,8 +15,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Esta clase permite el Manejo de Fechas
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class Fechas {
 
@@ -30,6 +34,13 @@ public class Fechas {
         return fecha;
     }
 
+    /**
+     * Mètodo que permite tener los meses entre fechas
+     *
+     * @param fInicial
+     * @param fFinal
+     * @return meses
+     */
     public static int mesesEntreFechas(Date fInicial, Date fFinal) {
 
         int meses = 1;
