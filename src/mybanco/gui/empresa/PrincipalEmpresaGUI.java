@@ -14,6 +14,7 @@ import mybanco.clases.Cliente;
 import mybanco.clases.Empresa;
 import mybanco.clases.Tercero;
 import mybanco.logica.Logica;
+import mybanco.logica.TablaCuentasNomina;
 
 /**
  *
@@ -35,6 +36,7 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
         
         msjBienvenida.setText("Hola Empresa! " + tercero.getNombre());
         setLocationRelativeTo(null);
+        cargarTabla();
     }
 
     /**
@@ -52,7 +54,7 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
         contenedorTablas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaNomina = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,7 +79,7 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
 
         contenedorTablas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaNomina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,7 +90,7 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaNomina);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,8 +201,8 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane contenedorTablas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel msjBienvenida;
+    private javax.swing.JTable tablaNomina;
     // End of variables declaration//GEN-END:variables
 
     public Logica getLogica() {
@@ -228,6 +230,15 @@ public class PrincipalEmpresaGUI extends javax.swing.JFrame {
     private void depositar() {
        this.setVisible(false);
         new ConsignarNominaGUI(this).setVisible(true);
+    }
+
+    /**
+     * Configurar el modelo de tabla donde 
+     * se mostrara todas las cuentas para la Empresa Actual
+     */
+    public void cargarTabla() {
+        TablaCuentasNomina tablaModel = new TablaCuentasNomina(logica.obtenerCuentasNomina(tercero));
+        tablaNomina.setModel(tablaModel);
     }
     
     

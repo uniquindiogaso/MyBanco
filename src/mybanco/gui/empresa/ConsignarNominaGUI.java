@@ -231,6 +231,7 @@ public class ConsignarNominaGUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+        p.cargarTabla();
     }
 
     private void initOtherComponets() {
@@ -260,8 +261,7 @@ public class ConsignarNominaGUI extends javax.swing.JFrame {
 
         if (ok) {
             JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion Nomina", JOptionPane.INFORMATION_MESSAGE);
-            setVisible(false);
-            p.setVisible(true);
+            atras();
         } else {
             JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
         }

@@ -19,6 +19,7 @@ public class CrearEmpresaGUI extends javax.swing.JFrame {
     public CrearEmpresaGUI(Login login) {
         this.login = login;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
