@@ -196,6 +196,7 @@ public class CuentaAhorrosGUI extends javax.swing.JFrame {
             
             //persistiendo informacion en archivos
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
+            p.cargarTablas();
         }
     }
 /**

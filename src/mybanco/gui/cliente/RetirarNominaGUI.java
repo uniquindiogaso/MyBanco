@@ -245,8 +245,7 @@ public class RetirarNominaGUI extends javax.swing.JFrame {
 
         if (ok) {
             JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
-            setVisible(false);
-            p.setVisible(true);
+            atras();
         } else {
             JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
         }

@@ -206,6 +206,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+        p.cargarTablas();
     }
 
     private void initOtherComponets() {
@@ -233,8 +234,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
        
        if ( ok ){
            JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
-           setVisible(false);
-           p.setVisible(true);           
+           atras();
        }else{
            JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
        }

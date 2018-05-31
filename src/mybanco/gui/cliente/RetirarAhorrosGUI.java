@@ -253,8 +253,7 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
 
         if (ok) {
             JOptionPane.showMessageDialog(this, "Transaccion Exitosa. se Entregan: $" + entregar, "Retiro Ahorros", JOptionPane.INFORMATION_MESSAGE);
-            setVisible(false);
-            p.setVisible(true);
+            atras();
         } else {
             JOptionPane.showMessageDialog(this, "No se logro realizar Retiro. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
         }
