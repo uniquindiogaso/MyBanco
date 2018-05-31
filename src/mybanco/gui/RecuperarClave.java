@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui;
 
@@ -17,11 +18,13 @@ import mybanco.logica.Logica;
 import mybanco.utilidades.Archivos;
 
 /**
+ * Esta clase permite la Recuperacion de claves
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class RecuperarClave extends javax.swing.JFrame {
-
 
     private Login login;
 
@@ -182,26 +185,29 @@ public class RecuperarClave extends javax.swing.JFrame {
 
     private void initOtherComponets() {
         //centrar ventana
-        this.setLocationRelativeTo(null);      
+        this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Metorod que permite Recuperar las claves
+     */
     private void recuperarClave() {
-        String identif  =  cIdentificacion.getText();
+        String identif = cIdentificacion.getText();
         String resp = cRespuesta.getText();
-        
-        if( identif == null || resp == null){
+
+        if (identif == null || resp == null) {
             JOptionPane.showMessageDialog(this, "Debe diligenciar todos los campos", "Cambios no validos", JOptionPane.QUESTION_MESSAGE);
         }
-        
-       Cliente c =  login.getLogic().recuperarClave(identif, resp);
-       
-       if( c != null){
-           String msj = "Su usuario es " + c.getUsuario() + "\nSu clave es: " + c.getClave();
-           JOptionPane.showMessageDialog(this, msj, "Datos de Acceso", JOptionPane.INFORMATION_MESSAGE);
-       }else{
-           JOptionPane.showMessageDialog(this, "Los datos suministrados no corresponden.\nIntente de nuevo.", "Usuario no encontrado.", JOptionPane.WARNING_MESSAGE);
-       }
-        
+
+        Cliente c = login.getLogic().recuperarClave(identif, resp);
+
+        if (c != null) {
+            String msj = "Su usuario es " + c.getUsuario() + "\nSu clave es: " + c.getClave();
+            JOptionPane.showMessageDialog(this, msj, "Datos de Acceso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Los datos suministrados no corresponden.\nIntente de nuevo.", "Usuario no encontrado.", JOptionPane.WARNING_MESSAGE);
+        }
+
     }
 
     private void atras() {

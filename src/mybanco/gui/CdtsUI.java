@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui;
 
@@ -13,8 +14,11 @@ import mybanco.enums.PagoInteres;
 import mybanco.logica.Logica;
 
 /**
+ * Esta clase permite el iterfaz de lo CDTS
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CdtsUI extends javax.swing.JFrame {
 
@@ -246,20 +250,20 @@ public class CdtsUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //Agregar Sexos(enum) a Combo
         cbModoPago.setModel(new DefaultComboBoxModel<>(PagoInteres.values()));
-        
+
         cbCliente.removeAllItems();
-        
+
         //Cargar Clientes
-        for(Cliente c : p.getLogica().getClientes()){
+        for (Cliente c : p.getLogica().getClientes()) {
             cbCliente.addItem(c);
         }
-        
+
     }
 
     private void guardar() {
-        Cdt cdt = new Cdt((Cliente)cbCliente.getSelectedItem(), Double.valueOf(cInversion.getText()), fCreacion.getDate(), Integer.valueOf(cDuracion.getText()), Double.valueOf(cInteres.getText()), (PagoInteres) cbModoPago.getSelectedItem());
+        Cdt cdt = new Cdt((Cliente) cbCliente.getSelectedItem(), Double.valueOf(cInversion.getText()), fCreacion.getDate(), Integer.valueOf(cDuracion.getText()), Double.valueOf(cInteres.getText()), (PagoInteres) cbModoPago.getSelectedItem());
         boolean ok = p.getLogica().getCdts().add(cdt);
-        if (ok){
+        if (ok) {
             System.out.println("Se guardo Correctamente");
             p.guardarCdt();
             atras();

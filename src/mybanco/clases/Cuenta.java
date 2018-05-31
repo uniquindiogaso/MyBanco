@@ -1,11 +1,20 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.clases;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * Esta clase permite el manejo de cuentas
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class Cuenta implements Serializable {
 

@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.clases;
 
@@ -9,8 +10,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * Esta clase permite el manejo de Cuentas de Nomina
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CuentaNomina extends Cuenta implements Serializable {
 

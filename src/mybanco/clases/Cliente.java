@@ -1,12 +1,23 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.clases;
 
 import mybanco.enums.Sexo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Esta clase permite el manejo de clientes
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
+ */
+public class Cliente extends Tercero implements Serializable {
 
-public class Cliente extends Tercero implements Serializable{
-    
     private String apellido;
     private int edad;
     private Sexo sexo;
@@ -31,10 +42,6 @@ public class Cliente extends Tercero implements Serializable{
         this.resSeguridad = resSeguridad;
     }
 
-
-    
-    
-
     public String getApellido() {
         return apellido;
     }
@@ -46,8 +53,6 @@ public class Cliente extends Tercero implements Serializable{
     public Sexo getSexo() {
         return sexo;
     }
-
-
 
     public Date getfNacimiento() {
         return fNacimiento;
@@ -93,13 +98,9 @@ public class Cliente extends Tercero implements Serializable{
         this.usuario = usuario;
     }
 
-    
-    
-    
     @Override
     public String toString() {
         return getNombre() + " " + apellido;
     }
-    
-    
+
 }

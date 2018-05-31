@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui;
 
@@ -18,8 +19,11 @@ import mybanco.logica.Logica;
 import mybanco.utilidades.General;
 
 /**
+ * Esta clase permite el manejo de cuentas
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class Login extends javax.swing.JFrame {
 
@@ -236,10 +240,13 @@ public class Login extends javax.swing.JFrame {
         this.logic = logic;
     }
 
+    /**
+     * Metodo que permie acceder a los datos de usuario
+     */
     private void acceder() {
-        
+
         General.imprimirClientes(logic.getClientes());
-        
+
         String usuario = cUsuario.getText();
         String clave = new String(cClave.getPassword());
         Tercero usuarioLogin = logic.iniciarSesion(usuario, clave);
@@ -255,6 +262,9 @@ public class Login extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Mètodo que permite Registar clientes y empresas
+     */
     private void registrar() {
         String[] tipo = {"Cliente", "Empresa"};
         int crear = JOptionPane.showInternalOptionDialog(this.getContentPane(), "¿Como se identifica?", "Seleccione Tipo de Tercero", 0, JOptionPane.QUESTION_MESSAGE, null, tipo, "Cliente");
@@ -274,7 +284,6 @@ public class Login extends javax.swing.JFrame {
 
     }
 
-    
     public void guardarCliente() {
         logic.persistencia().guardarCliente(logic.getClientes());
     }
@@ -282,7 +291,7 @@ public class Login extends javax.swing.JFrame {
     public void guardarEmpresa() {
         logic.persistencia().guardarEmpresa(logic.getEmpresas());
     }
-    
+
     private void salir() {
         guardarCliente();
         guardarEmpresa();
@@ -307,8 +316,6 @@ public class Login extends javax.swing.JFrame {
             }
         }
 
-
-        
     }
 
     private void recuperarCuenta() {

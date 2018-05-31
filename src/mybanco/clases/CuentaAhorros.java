@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.clases;
 
@@ -9,11 +10,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * Esta clase permite el manejo de Cuentas de Ahorro
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
-public class CuentaAhorros extends Cuenta implements Serializable{
-    
+
+public class CuentaAhorros extends Cuenta implements Serializable {
+
     private Date fRetiro;
     public final double INTERES_0_A_5 = 0.01;
     public double INTERES_5_A_20 = 0.02;
@@ -31,8 +36,4 @@ public class CuentaAhorros extends Cuenta implements Serializable{
         this.fRetiro = fRetiro;
     }
 
-
-    
-    
-    
 }
