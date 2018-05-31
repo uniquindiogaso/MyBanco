@@ -1,11 +1,21 @@
+
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
+
 package mybanco.gui.cliente;
 
 import javax.swing.JOptionPane;
 import mybanco.clases.Cuenta;
-
 /**
+ * Esta clase permite la interfaz de consiganar un ahorro
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class ConsignarAhorrosGUI extends javax.swing.JFrame {
 
@@ -178,6 +188,9 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que permite crear cuanta de ahorro
+     */
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -204,7 +217,9 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
             cbCuentasAhorros.addItem(c);
         }
     }
-
+/**
+ * MEtodo que permite consigar en cuenta de ahorros
+ */
     private void consignar() {
         if( cbCuentasAhorros.getSelectedItem() == null || cValor.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar la consignacion", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);

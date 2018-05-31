@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.empresa;
 
@@ -9,8 +10,11 @@ import mybanco.clases.Empresa;
 import mybanco.gui.Login;
 
 /**
+ * Esta clase permite Crear empresa GUI
  *
- * @author gusta
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CrearEmpresaGUI extends javax.swing.JFrame {
 
@@ -140,7 +144,7 @@ public class CrearEmpresaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-       guardar();
+        guardar();
     }//GEN-LAST:event_bGuardarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -203,18 +207,20 @@ public class CrearEmpresaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
-
+/**
+     * Mètodo que permiTe guardar los atributos de la empresa
+     */
     private void guardar() {
         Empresa empresa = new Empresa(cNombres.getText(), cNit.getText(), new String(cClave.getPassword()));
         boolean ok = login.getLogic().getEmpresas().add(empresa);
-        if (ok){
+        if (ok) {
             System.out.println("Se guardo Correctamente");
             login.guardarEmpresa();
             atras();
-        }else{
+        } else {
             System.out.println("No se logro guardar el Cliente");
         }
-        
+
     }
 
     private void atras() {

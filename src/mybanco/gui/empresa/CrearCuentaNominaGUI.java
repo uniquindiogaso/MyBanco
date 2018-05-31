@@ -1,3 +1,9 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.gui.empresa;
 
 import javax.swing.JOptionPane;
@@ -6,8 +12,11 @@ import mybanco.clases.Empresa;
 import mybanco.clases.Tercero;
 
 /**
+ * Esta clase permite el Manejo de CDTS
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CrearCuentaNominaGUI extends javax.swing.JFrame {
 
@@ -161,6 +170,9 @@ public class CrearCuentaNominaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que permite crear Cuentas de Ahorro
+     */
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -173,6 +185,9 @@ public class CrearCuentaNominaGUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo que permite ir hacia atras
+     */
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
@@ -188,28 +203,31 @@ public class CrearCuentaNominaGUI extends javax.swing.JFrame {
             cbEmpleados.addItem(c);
         }
     }
-
+/**
+ * Metodo que indica que si en la empresa tiene algun registro del  empleasp
+ * 
+ */
     private void crear() {
-        if (cbEmpleados.getSelectedItem() == null ) {
+        if (cbEmpleados.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para realizar Registro", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
         Tercero empleado = (Tercero) cbEmpleados.getSelectedItem();
-        Empresa empresa = (Empresa)p.getTercero();
-        
-        if(p.getLogica().existeCuentaNomina(empresa, empleado)){
+        Empresa empresa = (Empresa) p.getTercero();
+
+        if (p.getLogica().existeCuentaNomina(empresa, empleado)) {
             JOptionPane.showMessageDialog(this, "Para su Empresa ya existe una cuenta de nomina para este Empleado", "No se puede crear cuenta", JOptionPane.ERROR_MESSAGE);
             return;
         }
-       
+
         String numCuenta = p.getLogica().crearCuentaNomina(empresa, empleado);
-        
-        if(numCuenta != null){
-            JOptionPane.showMessageDialog(p.getContentPane(), "El numero de Cuenta de Nomina es " + numCuenta );
-            
+
+        if (numCuenta != null) {
+            JOptionPane.showMessageDialog(p.getContentPane(), "El numero de Cuenta de Nomina es " + numCuenta);
+
             //persistiendo informacion en archivos
             p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No se logro crear cuenta. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
         }
 

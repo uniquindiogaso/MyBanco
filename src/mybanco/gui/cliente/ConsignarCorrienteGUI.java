@@ -1,11 +1,21 @@
+/**
+ * Esta clase permite la interfaz de consiganar un ahorro
+ *
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
+ */
 package mybanco.gui.cliente;
 
 import javax.swing.JOptionPane;
 import mybanco.clases.Cuenta;
 
 /**
+ * Esta clase permite la interfaz de consiganar un ahorro
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class ConsignarCorrienteGUI extends javax.swing.JFrame {
 
@@ -18,7 +28,7 @@ public class ConsignarCorrienteGUI extends javax.swing.JFrame {
         this.p = p;
         initComponents();
         initOtherComponets();
-        
+
     }
 
     /**
@@ -123,7 +133,7 @@ public class ConsignarCorrienteGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-       atras();
+        atras();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void bConsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsignarActionPerformed
@@ -182,17 +192,6 @@ public class ConsignarCorrienteGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    private void crearCuentaAhorros() {
-        String res = p.getLogica().crearCuentaAhorros(p.getTercero());
-        if (res != null) {
-            //mostrar mensaje aca
-            System.out.println("Su Num de Cuenta de Ahorros es " + res + " Por favor no la pierda!");
-            JOptionPane.showMessageDialog(p.getContentPane(), "El numero de Cuenta de ahorros es " + res + ".\nPor favor anote este numero ya que sera fundamental para realizar transacciones.");
-            
-            //persistiendo informacion en archivos
-            p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
-        }
-    }
 
     private void atras() {
         this.setVisible(false);
@@ -201,32 +200,34 @@ public class ConsignarCorrienteGUI extends javax.swing.JFrame {
 
     private void initOtherComponets() {
         //centrar pantalla
-        setLocationRelativeTo(null);       
+        setLocationRelativeTo(null);
         //borrar contenido combobox
         cbCuentasCorrientes.removeAllItems();
-        for( Cuenta c : p.getLogica().cuentasCorrientesUsuario(p.getTercero())){
+        for (Cuenta c : p.getLogica().cuentasCorrientesUsuario(p.getTercero())) {
             cbCuentasCorrientes.addItem(c);
         }
     }
-
+/**
+ * Metodo que permite el funcionamiento del boton consignar
+ */
     private void consignar() {
-        if( cbCuentasCorrientes.getSelectedItem() == null || cValor.getText().isEmpty()){
+        if (cbCuentasCorrientes.getSelectedItem() == null || cValor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar la consignacion", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         Double valorConsignar = Double.valueOf(cValor.getText());
-        Cuenta cuenta = (Cuenta)cbCuentasCorrientes.getSelectedItem();
-        
-       boolean ok = p.getLogica().actualizarMontoCuentaCorriente(cuenta, valorConsignar);
-       
-       if ( ok ){
-           JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
-           setVisible(false);
-           p.setVisible(true);           
-       }else{
-           JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
-       }
+        Cuenta cuenta = (Cuenta) cbCuentasCorrientes.getSelectedItem();
+
+        boolean ok = p.getLogica().actualizarMontoCuentaCorriente(cuenta, valorConsignar);
+
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
+            setVisible(false);
+            p.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }

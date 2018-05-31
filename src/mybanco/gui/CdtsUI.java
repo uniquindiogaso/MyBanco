@@ -14,7 +14,7 @@ import mybanco.enums.PagoInteres;
 import mybanco.logica.Logica;
 
 /**
- * Esta clase permite el iterfaz de lo CDTS
+ * Esta clase permite el interfaz de lo CDTS
  *
  * @author Soraya Gonzalez
  * @author Andres Betancourt
@@ -259,7 +259,9 @@ public class CdtsUI extends javax.swing.JFrame {
         }
 
     }
-
+/**
+ * Mètodo que permite Guardar informacion de los 
+ */
     private void guardar() {
         Cdt cdt = new Cdt((Cliente) cbCliente.getSelectedItem(), Double.valueOf(cInversion.getText()), fCreacion.getDate(), Integer.valueOf(cDuracion.getText()), Double.valueOf(cInteres.getText()), (PagoInteres) cbModoPago.getSelectedItem());
         boolean ok = p.getLogica().getCdts().add(cdt);

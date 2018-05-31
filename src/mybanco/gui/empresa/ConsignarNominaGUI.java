@@ -1,3 +1,9 @@
+/*
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
+ */
 package mybanco.gui.empresa;
 
 import javax.swing.JOptionPane;
@@ -5,8 +11,11 @@ import mybanco.clases.Cliente;
 import mybanco.clases.Cuenta;
 
 /**
+ * Esta clase permite Cosignar Nomina GUI
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class ConsignarNominaGUI extends javax.swing.JFrame {
 
@@ -216,6 +225,10 @@ public class ConsignarNominaGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que permite crear cuentas de ahorro
+     */
+    
     private void crearCuentaAhorros() {
         String res = p.getLogica().crearCuentaAhorros(p.getTercero());
         if (res != null) {
@@ -249,14 +262,14 @@ public class ConsignarNominaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para realizar Registro", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        if (cCuenta.getText() == null){
+
+        if (cCuenta.getText() == null) {
             JOptionPane.showMessageDialog(this, "Debe crear cuenta nomina a Empleado para poder depositar", "No existe cuenta", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         Double valorConsignar = Double.valueOf(cValor.getText());
-       
+
         boolean ok = p.getLogica().actualizarMontoCuentaNomina(cCuenta.getText(), valorConsignar);
 
         if (ok) {
@@ -266,18 +279,20 @@ public class ConsignarNominaGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se logro realizar consignacion. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+/**
+ * Metodo que permite Obtener la cuenta de empleado
+ */
     private void obtenerCuentaEmpleado() {
         if (cbEmpleados.getSelectedItem() != null) {
             Cliente empleado = (Cliente) cbEmpleados.getSelectedItem();
-            
+
             String cuenta = p.getLogica().obtenerNumCuentaNomina(empleado);
-            if(cuenta != null){
+            if (cuenta != null) {
                 cCuenta.setText(cuenta);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Al parecer el usuario no tiene creada ninguna cuenta de nomina", "No se encontro cuenta.", JOptionPane.ERROR_MESSAGE);
                 cCuenta.setText("");
-            }          
+            }
         }
     }
 

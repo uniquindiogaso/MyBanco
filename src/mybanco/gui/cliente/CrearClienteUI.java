@@ -1,8 +1,11 @@
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
+
 package mybanco.gui.cliente;
 
 import java.time.LocalDate;
@@ -18,8 +21,11 @@ import mybanco.logica.Logica;
 import mybanco.utilidades.Archivos;
 
 /**
+ * Esta clase permite la interfaz de consiganar un ahorro
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class CrearClienteUI extends javax.swing.JFrame {
 
@@ -335,7 +341,9 @@ public class CrearClienteUI extends javax.swing.JFrame {
         //Agregar Sexos(enum) a Combo
         cbSexo.setModel(new DefaultComboBoxModel<>(Sexo.values()));
     }
-
+/**
+ * Metodo qye permite guardar campos para crear clientes
+ */
     private void guardar() {
 
         if (!validarCampos()) {
@@ -359,7 +367,10 @@ public class CrearClienteUI extends javax.swing.JFrame {
         }
 
     }
-
+/**
+ * Metodo que valida Campos del cliente
+ * @return los clientes que valido
+ */
     private boolean validarCampos() {
         boolean validos = cIdentificacion.getText() != null && cNombres.getText() != null
                 && cApellidos.getText() != null && cCorreo.getText() != null

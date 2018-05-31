@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Universidad del Quindio
+ * Lenguaje de Programación
+ * Docente: Orlando Herrera
+ * Armenia Quindio - 2018
  */
 package mybanco.gui.empresa;
 
@@ -17,8 +18,11 @@ import mybanco.logica.Logica;
 import mybanco.logica.TablaCuentasNomina;
 
 /**
+ * Es clase es la principal de empresa
  *
- * @author sori
+ * @author Soraya Gonzalez
+ * @author Andres Betancourt
+ * @version 1.0
  */
 public class PrincipalEmpresaGUI extends javax.swing.JFrame {
 
