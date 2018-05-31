@@ -4,14 +4,16 @@
  * Docente: Orlando Herrera
  * Armenia Quindio - 2018
  */
-package mybanco.gui;
+package mybanco.gui.admin;
 
-import mybanco.gui.admin.PrincipalAdmin;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import mybanco.clases.Cdt;
 import mybanco.clases.Cliente;
 import mybanco.enums.PagoInteres;
-import mybanco.logica.Logica;
+import mybanco.utilidades.Fechas;
+import mybanco.utilidades.General;
 
 /**
  * Esta clase permite el interfaz de lo CDTS
@@ -52,10 +54,13 @@ public class CdtsUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         cbModoPago = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
-        cInteres = new javax.swing.JTextField();
+        cRentabilidad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         bGuardar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        cInteres = new javax.swing.JTextField();
+        bCalcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,10 +91,11 @@ public class CdtsUI extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel6.setText("Cliente");
 
-        cInteres.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        cRentabilidad.setEditable(false);
+        cRentabilidad.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel11.setText("% Interes");
+        jLabel11.setText("Rentabilidad");
 
         bGuardar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         bGuardar.setText("Guardar");
@@ -107,35 +113,56 @@ public class CdtsUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel12.setText("% Interes (Mensual)");
+
+        cInteres.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+
+        bCalcular.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        bCalcular.setText("Calcular");
+        bCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCalcularActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bGuardar)
+                .addGap(18, 18, 18)
+                .addComponent(bCancelar)
+                .addGap(45, 45, 45))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bCancelar))
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cRentabilidad))
+                    .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel5)
+                    .addComponent(cbModoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbCliente, 0, 409, Short.MAX_VALUE)
-                                .addComponent(fCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel5)
-                            .addComponent(cbModoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(cInversion, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addComponent(cInteres, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))))
-                .addGap(44, 44, 44))
+                            .addComponent(jLabel12)
+                            .addComponent(cInteres, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(bCalcular)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(22, 22, 22)
@@ -161,25 +188,28 @@ public class CdtsUI extends javax.swing.JFrame {
                     .addComponent(fCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cDuracion))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbModoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cInteres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbModoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cInteres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCancelar)
-                    .addComponent(bGuardar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jLabel11)
+                    .addComponent(cRentabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCalcular))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bGuardar)
+                    .addComponent(bCancelar))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(40, 40, 40)
                     .addComponent(jLabel6)
-                    .addContainerGap(323, Short.MAX_VALUE)))
+                    .addContainerGap(360, Short.MAX_VALUE)))
         );
 
         pack();
@@ -192,6 +222,10 @@ public class CdtsUI extends javax.swing.JFrame {
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         atras();
     }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void bCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCalcularActionPerformed
+        calcularRentabilidad();
+    }//GEN-LAST:event_bCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,16 +263,19 @@ public class CdtsUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCalcular;
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bGuardar;
     private javax.swing.JTextField cDuracion;
     private javax.swing.JTextField cInteres;
     private javax.swing.JTextField cInversion;
+    private javax.swing.JTextField cRentabilidad;
     private javax.swing.JComboBox cbCliente;
     private javax.swing.JComboBox cbModoPago;
     private com.toedter.calendar.JDateChooser fCreacion;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -263,10 +300,16 @@ public class CdtsUI extends javax.swing.JFrame {
  * Mètodo que permite Guardar informacion de los 
  */
     private void guardar() {
-        Cdt cdt = new Cdt((Cliente) cbCliente.getSelectedItem(), Double.valueOf(cInversion.getText()), fCreacion.getDate(), Integer.valueOf(cDuracion.getText()), Double.valueOf(cInteres.getText()), (PagoInteres) cbModoPago.getSelectedItem());
+
+        if (!validarCampos()) {
+            JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar el CDT", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Cdt cdt = new Cdt((Cliente) cbCliente.getSelectedItem(), Double.valueOf(cInversion.getText()), fCreacion.getDate(), Integer.valueOf(cDuracion.getText()), Double.valueOf(cRentabilidad.getText()), (PagoInteres) cbModoPago.getSelectedItem());
         boolean ok = p.getLogica().getCdts().add(cdt);
         if (ok) {
-            System.out.println("Se guardo Correctamente");
+            JOptionPane.showMessageDialog(this, "Información Almacenada Correctamente.", "CDT Guardado", JOptionPane.INFORMATION_MESSAGE);
             p.guardarCdt();
             atras();
         }
@@ -275,5 +318,42 @@ public class CdtsUI extends javax.swing.JFrame {
     private void atras() {
         this.setVisible(false);
         p.setVisible(true);
+    }
+
+    private boolean validarCampos() {
+        boolean validos = cbCliente.getSelectedItem() != null
+                && cInversion.getText() != null && fCreacion.getDate() != null
+                && cDuracion.getText() != null && cbModoPago.getSelectedItem() != null
+                && cInteres.getText() != null;
+
+        return validos;
+    }
+
+    private void calcularRentabilidad() {
+        System.out.println("Calculando Rentabilidad");
+        Double rentabilidad = 0.0;
+        try {
+            Double vp = Double.valueOf(cInversion.getText());
+            Double tasa = Double.valueOf(cInteres.getText());
+            if (cbModoPago.getSelectedItem().equals(PagoInteres.Mensualmente)) {
+                rentabilidad = General.calcularRentabilidadMensual(vp, tasa);
+                cRentabilidad.setText(String.valueOf(rentabilidad));
+            }
+
+            if (cbModoPago.getSelectedItem().equals(PagoInteres.Vencimiento)) {
+
+                //Ubicar momento en el tiempo en el que se va a retirar el CDT
+                int dias = Integer.valueOf(cDuracion.getText());
+                Date fRetiro = Fechas.sumarDiasFecha(fCreacion.getDate(), dias);
+                int periodo = Fechas.mesesEntreFechas(fCreacion.getDate(), fRetiro);
+                
+                rentabilidad = General.calcularRentabilidadVencimiento(vp, tasa, periodo);
+                cRentabilidad.setText(String.valueOf(rentabilidad));
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe Ingresar Numeros Validos!");
+        }
+
     }
 }

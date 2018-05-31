@@ -60,4 +60,20 @@ public class Fechas {
 
         return meses;
     }
+
+    /**
+     * Sumar a determinada Fecha determinados dias
+     *
+     * @param fecha Fecha a la que se le va a sumar los dias
+     * @param dias dias a sumar
+     * @return fecha con los dias ya sumados
+     * @see http://developando.com/blog/java-sumar-restar-horas-dias-fecha/
+     */
+    public static Date sumarDiasFecha(Date fecha, int dias) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+    }
+
 }

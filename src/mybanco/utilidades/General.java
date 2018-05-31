@@ -46,4 +46,28 @@ public class General {
         }
     }
 
+    /**
+     * Calcular rentabilidad monetaria mensual de una inversion
+     *
+     * @param vp Valor a Invertir
+     * @param tasa interes que manejara
+     * @return rentabilidad obtenida
+     */
+    public static Double calcularRentabilidadMensual(Double vp, Double tasa) {
+        Double rentabilidad = vp * (Math.pow((1 + tasa), 1));
+        return rentabilidad;
+    }
+
+    /**
+     * Calcular rentabilidad monetaria en determinado periodo de una inversion
+     * @param vp Valor a Invertir
+     * @param tasa interes que manejara
+     * @param periodo periodo de tiempo
+     * @return  rentabilidad obtenida
+     */
+    public static Double calcularRentabilidadVencimiento(Double vp, Double tasa, int periodo) {
+        Double rentabilidad = vp * (Math.pow((1 + tasa), periodo));
+        return rentabilidad;
+    }
+
 }
