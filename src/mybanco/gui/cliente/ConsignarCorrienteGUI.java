@@ -7,14 +7,14 @@ import mybanco.clases.Cuenta;
  *
  * @author sori
  */
-public class ConsignarAhorrosGUI extends javax.swing.JFrame {
+public class ConsignarCorrienteGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CuentaAhorrosGUI
      */
     private PrincipalUsuarioGUI p;
 
-    public ConsignarAhorrosGUI(PrincipalUsuarioGUI p) {
+    public ConsignarCorrienteGUI(PrincipalUsuarioGUI p) {
         this.p = p;
         initComponents();
         initOtherComponets();
@@ -34,14 +34,14 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
         bCancelar = new javax.swing.JButton();
         bConsignar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        cbCuentasAhorros = new javax.swing.JComboBox();
+        cbCuentasCorrientes = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         cValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText(".:: Consignar a Ahorros ::.");
+        jLabel1.setText(".:: Consignar a Corriente ::.");
 
         bCancelar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         bCancelar.setText("Cancelar");
@@ -62,8 +62,8 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Numero de Cuenta");
 
-        cbCuentasAhorros.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        cbCuentasAhorros.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCuentasCorrientes.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        cbCuentasCorrientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel3.setText("Valor a Consignar");
@@ -95,7 +95,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
                                 .addComponent(bConsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                            .addComponent(cbCuentasAhorros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbCuentasCorrientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cValor))))
                 .addContainerGap())
         );
@@ -107,7 +107,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbCuentasAhorros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbCuentasCorrientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,14 +147,18 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsignarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsignarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsignarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsignarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -172,7 +176,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bConsignar;
     private javax.swing.JTextField cValor;
-    private javax.swing.JComboBox cbCuentasAhorros;
+    private javax.swing.JComboBox cbCuentasCorrientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -199,22 +203,22 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
         //centrar pantalla
         setLocationRelativeTo(null);       
         //borrar contenido combobox
-        cbCuentasAhorros.removeAllItems();
-        for( Cuenta c : p.getLogica().cuentasAhorrosUsuario(p.getTercero())){
-            cbCuentasAhorros.addItem(c);
+        cbCuentasCorrientes.removeAllItems();
+        for( Cuenta c : p.getLogica().cuentasCorrientesUsuario(p.getTercero())){
+            cbCuentasCorrientes.addItem(c);
         }
     }
 
     private void consignar() {
-        if( cbCuentasAhorros.getSelectedItem() == null || cValor.getText().isEmpty()){
+        if( cbCuentasCorrientes.getSelectedItem() == null || cValor.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe diligenciar los campos para registrar la consignacion", "Cambos Vacios", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
         Double valorConsignar = Double.valueOf(cValor.getText());
-        Cuenta cuenta = (Cuenta)cbCuentasAhorros.getSelectedItem();
+        Cuenta cuenta = (Cuenta)cbCuentasCorrientes.getSelectedItem();
         
-       boolean ok = p.getLogica().actualizarMontoCuentaAhorros(cuenta, valorConsignar,null);
+       boolean ok = p.getLogica().actualizarMontoCuentaCorriente(cuenta, valorConsignar);
        
        if ( ok ){
            JOptionPane.showMessageDialog(this, "Transaccion Exitosa.", "Consignacion", JOptionPane.INFORMATION_MESSAGE);

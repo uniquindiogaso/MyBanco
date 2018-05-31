@@ -7,6 +7,7 @@ import mybanco.clases.Cliente;
 import mybanco.clases.Cuenta;
 import mybanco.clases.CuentaAhorros;
 import mybanco.clases.CuentaCorriente;
+import mybanco.clases.CuentaNomina;
 import mybanco.clases.Empresa;
 import mybanco.clases.Tercero;
 import mybanco.utilidades.Archivos;
@@ -68,18 +69,46 @@ public class Logica {
     public ArrayList<Cuenta> cuentasAhorrosUsuario(Tercero t) {
         ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
-            if (cuenta instanceof CuentaAhorros && cuenta.getTercero().getIdentificacion().equals(t.getIdentificacion()))   {
+            if (cuenta instanceof CuentaAhorros && cuenta.getTercero().getIdentificacion().equals(t.getIdentificacion())) {
                 res.add(cuenta);
             }
-        }        
-        System.out.println("Cuentas Ahorros para Usuario: " + cuentas.size());
+        }
+        System.out.println("Cuentas Ahorros para Usuario: " + res.size());
         return res;
     }
-    
-    public boolean actualizarMontoCuentaAhorros(Cuenta cuentaAct , Double monto){
+
+    public ArrayList<Cuenta> cuentasCorrientesUsuario(Tercero t) {
+        ArrayList<Cuenta> res = new ArrayList<>();
         for (Cuenta cuenta : cuentas) {
-            if(cuenta.getNumero().equals(cuentaAct.getNumero())){
-                cuenta.setMonto(monto+cuenta.getMonto());
+            if (cuenta instanceof CuentaCorriente && cuenta.getTercero().getIdentificacion().equals(t.getIdentificacion())) {
+                res.add(cuenta);
+            }
+        }
+        System.out.println("Cuentas corrientes para Usuario: " + res.size());
+        return res;
+    }
+
+    public boolean actualizarMontoCuentaAhorros(Cuenta cuentaAct, Double monto, Date fRetiro) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getNumero().equals(cuentaAct.getNumero())) {
+
+//                if (fRetiro != null) {
+//                    ((CuentaAhorros) cuenta).setfRetiro(fRetiro);
+//                }
+                cuenta.setMonto(monto + cuenta.getMonto());
+                //actualizar en archivo
+                archivos.guardarCuentas(cuentas);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean actualizarMontoCuentaCorriente(Cuenta cuentaAct, Double monto) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getNumero().equals(cuentaAct.getNumero())) {
+
+                cuenta.setMonto(monto + cuenta.getMonto());
                 //actualizar en archivo
                 archivos.guardarCuentas(cuentas);
                 return true;
@@ -89,6 +118,17 @@ public class Logica {
     }
     
     
+    public boolean actualizarMontoCuentaNomina(String numCuenta, Double monto) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getNumero().equals(numCuenta)) {
+                cuenta.setMonto(monto + cuenta.getMonto());
+                //actualizar en archivo
+                archivos.guardarCuentas(cuentas);
+                return true;
+            }
+        }
+        return false;
+    }    
 
     public String crearCuentaAhorros(Tercero tercero) {
         String numCuenta = General.numCuenta(tercero);
@@ -106,6 +146,37 @@ public class Logica {
             return numCuenta;
         }
         return null;
+    }
+
+    public String crearCuentaNomina(Empresa empresa, Tercero tercero) {
+        String numCuenta = General.numCuenta(tercero);
+        boolean ok = cuentas.add(new CuentaNomina(empresa, numCuenta, 0, tercero));
+        if (ok) {
+            return numCuenta;
+        }
+        return null;
+    }
+
+    public String obtenerNumCuentaNomina(Cliente c) {
+        for (Cuenta cuenta : cuentas) {
+            if (c.getIdentificacion().equals(cuenta.getTercero().getIdentificacion()) && cuenta instanceof CuentaNomina) {
+                return cuenta.getNumero();
+            }
+        }
+        return null;
+    }
+
+    public boolean existeCuentaNomina(Empresa empresa, Tercero empleado) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaNomina) {
+                System.out.println("cuenta nomina! " + cuenta.getTercero().getNombre());
+                CuentaNomina nomina = (CuentaNomina) cuenta;
+                if (nomina.getEmpresa().getIdentificacion().equals(empresa.getIdentificacion()) && nomina.getTercero().getIdentificacion().equals(empleado.getIdentificacion())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public ArrayList<Cliente> getClientes() {

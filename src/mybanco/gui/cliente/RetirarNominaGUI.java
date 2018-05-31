@@ -7,14 +7,14 @@ import mybanco.clases.Cuenta;
  *
  * @author sori
  */
-public class ConsignarAhorrosGUI extends javax.swing.JFrame {
+public class RetirarNominaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CuentaAhorrosGUI
      */
     private PrincipalUsuarioGUI p;
 
-    public ConsignarAhorrosGUI(PrincipalUsuarioGUI p) {
+    public RetirarNominaGUI(PrincipalUsuarioGUI p) {
         this.p = p;
         initComponents();
         initOtherComponets();
@@ -32,7 +32,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         bCancelar = new javax.swing.JButton();
-        bConsignar = new javax.swing.JButton();
+        bRetirar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbCuentasAhorros = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
@@ -41,7 +41,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText(".:: Consignar a Ahorros ::.");
+        jLabel1.setText(".:: Retiros de Nomina::.");
 
         bCancelar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         bCancelar.setText("Cancelar");
@@ -51,22 +51,22 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
             }
         });
 
-        bConsignar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        bConsignar.setText("Consignar");
-        bConsignar.addActionListener(new java.awt.event.ActionListener() {
+        bRetirar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        bRetirar.setText("¡Retirar!");
+        bRetirar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bConsignarActionPerformed(evt);
+                bRetirarActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel2.setText("Numero de Cuenta");
+        jLabel2.setText("Numero de Cuenta Nomina");
 
         cbCuentasAhorros.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         cbCuentasAhorros.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel3.setText("Valor a Consignar");
+        jLabel3.setText("Valor a Retirar");
 
         cValor.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
@@ -92,7 +92,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bConsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                             .addComponent(cbCuentasAhorros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,7 +115,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancelar)
-                    .addComponent(bConsignar))
+                    .addComponent(bRetirar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -126,9 +126,9 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
        atras();
     }//GEN-LAST:event_bCancelarActionPerformed
 
-    private void bConsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsignarActionPerformed
+    private void bRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetirarActionPerformed
         consignar();
-    }//GEN-LAST:event_bConsignarActionPerformed
+    }//GEN-LAST:event_bRetirarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,14 +147,18 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarNominaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarNominaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarNominaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsignarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarNominaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -170,7 +174,7 @@ public class ConsignarAhorrosGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
-    private javax.swing.JButton bConsignar;
+    private javax.swing.JButton bRetirar;
     private javax.swing.JTextField cValor;
     private javax.swing.JComboBox cbCuentasAhorros;
     private javax.swing.JLabel jLabel1;

@@ -10,14 +10,14 @@ import mybanco.utilidades.Fechas;
  *
  * @author sori
  */
-public class RetirarAhorrosGUI extends javax.swing.JFrame {
+public class RetirarCorrienteGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CuentaAhorrosGUI
      */
     private PrincipalUsuarioGUI p;
 
-    public RetirarAhorrosGUI(PrincipalUsuarioGUI p) {
+    public RetirarCorrienteGUI(PrincipalUsuarioGUI p) {
         this.p = p;
         initComponents();
         initOtherComponets();
@@ -37,14 +37,16 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         bCancelar = new javax.swing.JButton();
         bRetirar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        cbCuentasAhorros = new javax.swing.JComboBox();
+        cbCuentasCorriente = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         cRentabilidad = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText(".:: Retiro de Ahorros ::.");
+        jLabel1.setText(".:: Retiro de Cuenta Corriente ::.");
 
         bCancelar.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         bCancelar.setText("Cancelar");
@@ -65,19 +67,24 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Numero de Cuenta");
 
-        cbCuentasAhorros.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        cbCuentasAhorros.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbCuentasAhorros.addItemListener(new java.awt.event.ItemListener() {
+        cbCuentasCorriente.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        cbCuentasCorriente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCuentasCorriente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbCuentasAhorrosItemStateChanged(evt);
+                cbCuentasCorrienteItemStateChanged(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel3.setText("Rentabilidad Generada");
+        jLabel3.setText("Valor a Retirar");
 
         cRentabilidad.setEditable(false);
         cRentabilidad.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel4.setText("Cuota Manejo");
+
+        cValor.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,24 +95,27 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
+                                .addGap(32, 32, 32)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel3)))
+                        .addGap(0, 26, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addComponent(cbCuentasCorriente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cRentabilidad)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                            .addComponent(cbCuentasAhorros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cRentabilidad))))
+                                .addComponent(bCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cValor)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -116,16 +126,20 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbCuentasAhorros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbCuentasCorriente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(9, 9, 9)
                 .addComponent(cRentabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancelar)
                     .addComponent(bRetirar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -139,9 +153,9 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         retirar();
     }//GEN-LAST:event_bRetirarActionPerformed
 
-    private void cbCuentasAhorrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbCuentasAhorrosItemStateChanged
-        calcularRentabilidad();
-    }//GEN-LAST:event_cbCuentasAhorrosItemStateChanged
+    private void cbCuentasCorrienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbCuentasCorrienteItemStateChanged
+        calcularCuotaManejo();
+    }//GEN-LAST:event_cbCuentasCorrienteItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -160,14 +174,22 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RetirarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RetirarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RetirarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RetirarAhorrosGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirarCorrienteGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -189,23 +211,13 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bRetirar;
     private javax.swing.JTextField cRentabilidad;
-    private javax.swing.JComboBox cbCuentasAhorros;
+    private javax.swing.JTextField cValor;
+    private javax.swing.JComboBox cbCuentasCorriente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
-
-    private void crearCuentaAhorros() {
-        String res = p.getLogica().crearCuentaAhorros(p.getTercero());
-        if (res != null) {
-            //mostrar mensaje aca
-            System.out.println("Su Num de Cuenta de Ahorros es " + res + " Por favor no la pierda!");
-            JOptionPane.showMessageDialog(p.getContentPane(), "El numero de Cuenta de ahorros es " + res + ".\nPor favor anote este numero ya que sera fundamental para realizar transacciones.");
-
-            //persistiendo informacion en archivos
-            p.getLogica().persistencia().guardarCuentas(p.getLogica().getCuentas());
-        }
-    }
 
     private void atras() {
         this.setVisible(false);
@@ -216,53 +228,45 @@ public class RetirarAhorrosGUI extends javax.swing.JFrame {
         //centrar pantalla
         setLocationRelativeTo(null);
         //borrar contenido combobox
-        cbCuentasAhorros.removeAllItems();
-        for (Cuenta c : p.getLogica().cuentasAhorrosUsuario(p.getTercero())) {
-            cbCuentasAhorros.addItem(c);
+        cbCuentasCorriente.removeAllItems();
+        for (Cuenta c : p.getLogica().cuentasCorrientesUsuario(p.getTercero())) {
+            cbCuentasCorriente.addItem(c);
         }
     }
 
     private void retirar() {
-        if (cbCuentasAhorros.getSelectedItem() == null ) {
+        if (cbCuentasCorriente.getSelectedItem() == null ) {
             JOptionPane.showMessageDialog(this, "Debe tener una cuenta registrada para poder retirar", "No hay cuentas registradas", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        Cuenta cuenta = (Cuenta) cbCuentasAhorros.getSelectedItem();
-        Double entregar = cuenta.getMonto()+Double.valueOf(cRentabilidad.getText());
+        Cuenta cuenta = (Cuenta) cbCuentasCorriente.getSelectedItem();
+        Double montoSolicitado = Double.valueOf(cValor.getText());
         
-        boolean ok = p.getLogica().actualizarMontoCuentaAhorros(cuenta, -cuenta.getMonto(),new Date());
+        if(montoSolicitado > cuenta.getMonto()){
+             JOptionPane.showMessageDialog(this, "Saldo Insuficiente. Cuenta con $"+cuenta.getMonto() + " en la cuenta.", "Sin Fondos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+       
+       
+        boolean ok = p.getLogica().actualizarMontoCuentaCorriente(cuenta, -montoSolicitado);
 
         if (ok) {
-            JOptionPane.showMessageDialog(this, "Transaccion Exitosa. se Entregan: $"+entregar, "Retiro Ahorros", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Transaccion Exitosa. se Entregan: $"+montoSolicitado, "Retiro Cuenta Corriente", JOptionPane.INFORMATION_MESSAGE);
             setVisible(false);
             p.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "No se logro realizar Retiro. Consulte a su Banco", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    private void calcularRentabilidad() {
-        if (cbCuentasAhorros.getSelectedItem() != null) {
-            Cuenta c = (Cuenta) cbCuentasAhorros.getSelectedItem();
-            Date fCreacion = c.getfCreacion();
-            Date fRetiro = new Date();
-
-            int meses = Fechas.mesesEntreFechas(fCreacion, fRetiro);
-
-            Double tasa = 0.03;
-
-            if (c.getMonto() >= 0 && c.getMonto() <= 5000000) {
-                tasa = 0.01;
-            } else if (c.getMonto() > 5000000 && c.getMonto() <= 20000000) {
-                tasa = 0.02;
-            }
-
-            Double rentabilidad = c.getMonto() * tasa * meses;
-
-            cRentabilidad.setText(String.valueOf(rentabilidad));
+    /**
+     * Este metodo permite calcular cuota de manejo
+     */
+    private void calcularCuotaManejo() {
+        if (cbCuentasCorriente.getSelectedItem() != null) {
+            Cuenta c = (Cuenta) cbCuentasCorriente.getSelectedItem();            
+            cRentabilidad.setText(String.valueOf(Cuenta.CUOTA_MANEJO));
         }
-
     }
 
 }

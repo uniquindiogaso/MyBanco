@@ -34,24 +34,29 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        consignarCuentaCorriente = new javax.swing.JButton();
+        bCrearCuentaCorriente = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bRetirarCuentaCorriente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText(".:: Cuentas Corrientes ::.");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jButton1.setText("Consignar");
-
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jButton2.setText("Crear Cuenta Corriente");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        consignarCuentaCorriente.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        consignarCuentaCorriente.setText("Consignar");
+        consignarCuentaCorriente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                consignarCuentaCorrienteActionPerformed(evt);
+            }
+        });
+
+        bCrearCuentaCorriente.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        bCrearCuentaCorriente.setText("Crear Cuenta Corriente");
+        bCrearCuentaCorriente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearCuentaCorrienteActionPerformed(evt);
             }
         });
 
@@ -63,8 +68,13 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jButton4.setText("Retiro Dinero");
+        bRetirarCuentaCorriente.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        bRetirarCuentaCorriente.setText("Retiro Dinero");
+        bRetirarCuentaCorriente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRetirarCuentaCorrienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,8 +83,8 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                    .addComponent(consignarCuentaCorriente, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                    .addComponent(bRetirarCuentaCorriente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -86,7 +96,7 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(14, 14, 14)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                    .addComponent(bCrearCuentaCorriente, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                     .addGap(21, 21, 21)))
         );
         layout.setVerticalGroup(
@@ -95,29 +105,37 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(86, 86, 86)
-                .addComponent(jButton1)
+                .addComponent(consignarCuentaCorriente)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(bRetirarCuentaCorriente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(72, 72, 72)
-                    .addComponent(jButton2)
+                    .addComponent(bCrearCuentaCorriente)
                     .addContainerGap(201, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bCrearCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearCuentaCorrienteActionPerformed
        crearCuentaCorriente();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bCrearCuentaCorrienteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        atras();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void consignarCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consignarCuentaCorrienteActionPerformed
+        consignar();
+    }//GEN-LAST:event_consignarCuentaCorrienteActionPerformed
+
+    private void bRetirarCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetirarCuentaCorrienteActionPerformed
+        retirar();
+    }//GEN-LAST:event_bRetirarCuentaCorrienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +174,10 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bCrearCuentaCorriente;
+    private javax.swing.JButton bRetirarCuentaCorriente;
+    private javax.swing.JButton consignarCuentaCorriente;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
@@ -183,6 +201,16 @@ public class CuentaCorrienteGUI extends javax.swing.JFrame {
     private void initOtherComponets() {
         //centrar ventana
         this.setLocationRelativeTo(null);
+    }
+
+    private void consignar() {
+        this.setVisible(false);
+        new ConsignarCorrienteGUI(p).setVisible(true);
+    }
+
+    private void retirar() {
+        this.setVisible(false);
+        new RetirarCorrienteGUI(p).setVisible(true);
     }
 
 }

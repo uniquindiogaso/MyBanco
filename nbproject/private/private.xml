@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Soraya">
-            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/gui/CdtsUI.java</file>
-            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/gui/Login.java</file>
-            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/clases/Cliente.java</file>
-            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/clases/Cdt.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/clases/CuentaAhorros.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/gui/cliente/PrincipalUsuarioGUI.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/gui/cliente/ConsignarAhorrosGUI.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/gui/cliente/CuentaAhorrosGUI.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/gui/cliente/RetirarAhorrosGUI.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/logica/Logica.java</file>
             <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/utilidades/Archivos.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/utilidades/Fechas.java</file>
+            <file>file:/D:/Desarrollo/Sorito/MyBanco/src/mybanco/clases/Cuenta.java</file>
         </group>
     </open-files>
 </project-private>

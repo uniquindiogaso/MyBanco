@@ -5,12 +5,14 @@
  */
 package mybanco.gui;
 
+import mybanco.gui.empresa.CrearEmpresaGUI;
 import javax.swing.JOptionPane;
 import mybanco.clases.Cliente;
 import mybanco.clases.Empresa;
 import mybanco.clases.Tercero;
 import mybanco.gui.admin.PrincipalAdmin;
 import mybanco.gui.cliente.PrincipalUsuarioGUI;
+import mybanco.gui.empresa.PrincipalEmpresaGUI;
 import mybanco.logica.Logica;
 import mybanco.utilidades.General;
 
@@ -255,7 +257,7 @@ public class Login extends javax.swing.JFrame {
                     break;
                 case "Empresa":
                     this.setVisible(false);
-                    new EmpresaUI(this).setVisible(true);
+                    new CrearEmpresaGUI(this).setVisible(true);
                     break;
             }
         }
@@ -290,6 +292,8 @@ public class Login extends javax.swing.JFrame {
             }
             if (usuarioLogin instanceof Empresa) {
                 System.out.println("Es un Empresa");
+                new PrincipalEmpresaGUI(logic, usuarioLogin).setVisible(true);
+                this.setVisible(false);
             }
         }
 

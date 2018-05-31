@@ -7,8 +7,9 @@ import java.util.Date;
  *
  * @author sori
  */
-public class Cuenta implements Serializable{
-    
+public class Cuenta implements Serializable {
+
+    public static int CUOTA_MANEJO = 8000;
     private String numero;
     private Date fCreacion;
     private double monto;
@@ -28,8 +29,6 @@ public class Cuenta implements Serializable{
     public void setTercero(Tercero tercero) {
         this.tercero = tercero;
     }
-    
-    
 
     public String getNumero() {
         return numero;
@@ -53,9 +52,7 @@ public class Cuenta implements Serializable{
 
     @Override
     public String toString() {
-        return  numero + " - $" + monto;
+        return numero + " - $" + monto;
     }
-    
-    
-    
+
 }
