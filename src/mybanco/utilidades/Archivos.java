@@ -275,7 +275,7 @@ public class Archivos {
                 = null;
         ArrayList<Cdt> res = new ArrayList<>();
         try {
-            ficheroEntrada = new FileInputStream(CUENTAS);
+            ficheroEntrada = new FileInputStream(CDT);
             ObjectInputStream objetoEntrada = new ObjectInputStream(ficheroEntrada);
 
             res = (ArrayList<Cdt>) objetoEntrada.readObject();
@@ -327,6 +327,7 @@ public class Archivos {
                 c.setCorreo(registro[3]);
                 c.setResSeguridad(registro[6]);
                 c.setfNacimiento(Fechas.StringAFecha(registro[7]));
+                c.setUsuario(registro[8]);
                 clientes.add(c);
             }
             return clientes;
@@ -379,5 +380,6 @@ public class Archivos {
         comprobarExistenciaArchivos(CLIENTES);
         comprobarExistenciaArchivos(EMPRESAS);
         comprobarExistenciaArchivos(CUENTAS);
+        comprobarExistenciaArchivos(CDT);
     }
 }

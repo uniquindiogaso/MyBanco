@@ -84,4 +84,12 @@ public class Cdt implements Serializable {
         this.modoPago = modoPago;
     }
 
+    @Override
+    public String toString() {
+        return cliente + " - $" + inversion + " - Duración :" + duracion;
+    }
+
+    
+    
+    
 }
