@@ -36,4 +36,11 @@ public class CuentaAhorros extends Cuenta implements Serializable {
         this.fRetiro = fRetiro;
     }
 
+    @Override
+    public String toString() {
+        return super.getNumero() + " $"+super.getMonto() ;
+    }
+    
+    
+
 }
